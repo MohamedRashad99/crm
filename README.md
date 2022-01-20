@@ -1,16 +1,25 @@
-# crm
+# CRM - Techno Masr
 
-A new Flutter application.
 
-## Getting Started
+- https://flutterqueen.github.io/website/docs/intro
 
-This project is a starting point for a Flutter application.
+- Queen will provide these features and more in single solution
 
-A few resources to get you started if this is your first Flutter project:
+- # The Goal
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- standard architecture between projects
+- productive environment
+- maintainable projects
+- easy to use features out of the box
+- take care of the redundant features which lets you focus more on the requirements
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+- # State Management
+- Integration parts of BloC :- 
+- https://bloclibrary.dev/#/flutterfirebaselogintutorial?id=login-cubit
+
+
+- local Notification 
+- { Reso Coder } => https://resocoder.com/2021/08/13/flutter-awesome-notifications-create-local-notifications-with-ease/
+#CRM collection for postman:
+https://www.getpostman.com/collections/d95b2668361c81839c16
