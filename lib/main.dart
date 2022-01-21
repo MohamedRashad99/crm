@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'config/bloc_observer.dart';
 import 'generated/tr.dart';
 import 'local_storage/local_storage.dart';
-import 'screens/splash_screen/view.dart';
+import 'screens/splash/view.dart';
 
 
 Future<void> main() async {

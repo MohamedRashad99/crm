@@ -15,45 +15,49 @@ class ForgetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
 
     return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/image/Forgot password.png"),
-                fit: BoxFit.fill,
+      body: Form(
+        key:_globalKey ,
+        child: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/image/Forgot password.png"),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
-          ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 80),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const TitleForgetPassword(),
-                  spacer(height),
-                  CustomTextFieldCrmPhone(
-                    dIcon: Icons.phone,
-                    label: true,
-                    hint: 'Please enter your phone number ..? ',
-                    validator: qValidator([
-                      const IsRequired(),
-                      const IsEmail('Something Error please Try Again ..! '),
-                      const MinLength(8),
-                    ]),
-                  ),
-                  spacer(height),
-                 const Description(),
-                  spacer(height),
-                 const  SendCode(),
-                ],
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 80),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const TitleForgetPassword(),
+                    spacer(height),
+                    CustomTextFieldCrmPhone(
+                      dIcon: Icons.phone,
+                      label: true,
+                      hint: 'Please enter your phone number ..? ',
+                      validator: qValidator([
+                        const IsRequired(),
+                        const IsEmail('Something Error please Try Again ..! '),
+                        const MinLength(8),
+                      ]),
+                    ),
+                    spacer(height),
+                   const Description(),
+                    spacer(height),
+                   const  SendCode(),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/customButton.dart';
-import 'package:crm/screens/home_screen/view.dart';
-import 'package:crm/screens/vcode_screen/page/views/background.dart';
-import 'package:crm/screens/vcode_screen/page/views/title.dart';
+import 'package:crm/screens/home/view.dart';
+import 'package:crm/screens/vcode/page/views/background.dart';
+import 'package:crm/screens/vcode/page/views/title.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,7 +40,7 @@ class _VCodeForgetScreenState extends State<VCodeScreen> {
 
   @override
   void dispose() {
-    _pinFieldVcodeController.dispose();
+   // _pinFieldVcodeController.dispose();
     super.dispose();
   }
 

@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:crm/screens/components/cach_helper.dart';
-import 'package:crm/screens/onboarding_screen/view.dart';
-import 'package:crm/screens/sign_in_screen/view.dart';
+import 'package:crm/screens/onboarding/view.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

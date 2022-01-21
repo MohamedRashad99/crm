@@ -1,7 +1,7 @@
 import 'package:crm/screens/components/cach_helper.dart';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/mediaButton.dart';
-import 'package:crm/screens/sign_in_screen/view.dart';
+import 'package:crm/screens/sign_in/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -28,7 +28,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       value: true,
     ).then((value) {
       if (value) {
-        Get.off(() => const SignInScreen());
+        Get.off(() =>  SignInScreen());
       }
     });
   }
@@ -68,7 +68,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     padding: const EdgeInsets.only(bottom: 60),
                     child: MediaButton(
                         color: kPrimaryColor,
-                        onPressed: () => Get.offAll(() => const SignInScreen()),
+                        onPressed: () => Get.offAll(() =>  SignInScreen()),
                         title: 'تسجيل الدخول'),
                   )
                 : const SizedBox(),

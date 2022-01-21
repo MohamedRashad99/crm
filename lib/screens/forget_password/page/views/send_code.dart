@@ -1,5 +1,5 @@
 import 'package:crm/screens/components/constants.dart';
-import 'package:crm/screens/vcode_forget_screen/view.dart';
+import 'package:crm/screens/vcode_forget/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 class SendCode extends StatelessWidget {

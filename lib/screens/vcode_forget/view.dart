@@ -3,8 +3,9 @@ import 'dart:developer';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/customButton.dart';
 import 'package:crm/screens/confirm_password/view.dart';
-import 'package:crm/screens/vcode_forget_screen/page/views/background.dart';
-import 'package:crm/screens/vcode_forget_screen/page/views/title.dart';
+import 'package:crm/screens/vcode_forget/page/views/background.dart';
+import 'package:crm/screens/vcode_forget/page/views/title.dart';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -43,7 +44,7 @@ class _VCodeForgetScreenState extends State<VCodeForgetScreen> {
   @override
   void dispose() {
 
-    _pinFieldController.dispose();
+    //_pinFieldController.dispose();
     super.dispose();
   }
   @override
@@ -86,7 +87,7 @@ class _VCodeForgetScreenState extends State<VCodeForgetScreen> {
                     buildRow(),
                     buildSizedBox(height),
                     CustomButton(onPressed: (){
-                      Get.to(()=>const ResetPasswordScreen());
+                      Get.to(()=> ResetPasswordScreen());
                     },title: 'VERIFY',color: kPrimaryColor,),
                   ],
                 ),
