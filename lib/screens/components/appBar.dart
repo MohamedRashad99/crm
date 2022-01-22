@@ -46,6 +46,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => AppBar().preferredSize;
 }
+/*
 customAppBar({required BuildContext context, required VoidCallback press} ) {
   return AppBar(
     automaticallyImplyLeading: false,
@@ -84,4 +85,39 @@ customAppBar({required BuildContext context, required VoidCallback press} ) {
     ],
   );
 }
+*/
 
+AppBar customAppbar({String? title, required VoidCallback press, context}) {
+  return AppBar(
+    backgroundColor: Colors.white,
+    title: Center(
+        child: Text(
+          '$title',
+          style: const TextStyle(
+              color: Colors.black,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              fontFamily: "Cairo"),
+        )),
+    actions: [
+      InkWell(
+        onTap: () {
+          // Navigator.push(context,
+          //     MaterialPageRoute(builder: (context) => ProfileScreen()));
+        },
+        child: CircleAvatar(
+          child: Image.asset(
+            'assets/image/avatar3 1.png',
+            width: 30,
+            height: 30,
+            fit: BoxFit.cover,
+          ),
+          backgroundColor: Colors.white,
+        ),
+      ),
+    ],
+    leading:
+    InkWell(onTap: press, child: Image.asset('assets/image/Vector.png')),
+    elevation: 0,
+  );
+}
