@@ -1,6 +1,6 @@
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
-import 'package:crm/screens/components/drawer.dart';
+import '../../../../drawer/view.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {
