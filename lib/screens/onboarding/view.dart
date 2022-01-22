@@ -1,3 +1,4 @@
+import 'package:crm/local_storage/local_storage.dart';
 import 'package:crm/screens/components/cach_helper.dart';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/mediaButton.dart';
@@ -21,20 +22,22 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   Content content = Content();
 
-  void submit() {
+  //void submit() {
 
-    CacheHelper.saveData(
-      key: 'onBoarding',
-      value: true,
-    ).then((value) {
-      if (value) {
-        Get.off(() =>  SignInScreen());
-      }
-    });
-  }
+  //   CacheHelper.saveData(
+  //     key: 'onBoarding',
+  //     value: true,
+  //   ).then((value) {
+  //     if (value) {
+  //       Get.off(() =>  SignInScreen());
+  //     }
+  //   });
+  // }
+
 
   @override
   Widget build(BuildContext context) {
+    LocalStorage.setBool('onBoarding', true);
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: kLightText,
