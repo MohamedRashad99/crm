@@ -1,4 +1,5 @@
 import 'package:crm/screens/components/appBar.dart';
+import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +16,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBackgroundButton,
+
       drawer: drawer(context: context),
       key: _scaffoldKey,
       appBar: customAppbar(
+        isIcons: true,
+          icons: Icons.arrow_forward_ios,
           title: "الإشعارات",
           press: () => _scaffoldKey.currentState!.openDrawer(),
           context: context),

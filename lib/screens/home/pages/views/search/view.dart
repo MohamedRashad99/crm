@@ -1,4 +1,5 @@
 import 'package:crm/screens/components/appBar.dart';
+import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,8 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: kBackgroundButton,
+
       drawer: drawer(context: context),
       key: _scaffoldKey,
       appBar: customAppbar( title: "البحث",

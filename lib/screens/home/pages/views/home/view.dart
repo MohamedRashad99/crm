@@ -1,9 +1,10 @@
 import 'package:crm/screens/components/appBar.dart';
+import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/drawer.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
-  const  MainScreen({Key? key}) : super(key: key);
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -14,14 +15,14 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
+      backgroundColor: kBackgroundButton,
       drawer: drawer(context: context),
       key: _scaffoldKey,
-      appBar: customAppbar( title: "الرئيسية",
+      appBar: customAppbar(
+          title: "الرئيسية",
           press: () => _scaffoldKey.currentState!.openDrawer(),
-          context: context
-      ),
-
+          context: context),
       body: const Center(
         child: Text(
           'Index 0: Home',

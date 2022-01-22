@@ -3,30 +3,31 @@ import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/drawer.dart';
 import 'package:flutter/material.dart';
 
-class CalendarScreen extends StatefulWidget {
-  const CalendarScreen({Key? key}) : super(key: key);
+class UnitesScreen extends StatefulWidget {
+  const UnitesScreen({Key? key}) : super(key: key);
 
   @override
-  State<CalendarScreen> createState() => _CalendarScreenState();
+  State<UnitesScreen> createState() => _MainScreenState();
 }
 
-class _CalendarScreenState extends State<CalendarScreen> {
+class _MainScreenState extends State<UnitesScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundButton,
-
       drawer: drawer(context: context),
       key: _scaffoldKey,
       appBar: customAppbar(
-          title: "التقويم",
+          isIcons: true,
+          icons: Icons.arrow_forward_ios,
+          title: "الوحدات",
           press: () => _scaffoldKey.currentState!.openDrawer(),
           context: context),
       body: const Center(
         child: Text(
-          'Index 3: Calenders',
+          'Index 0: Unites',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),

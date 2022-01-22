@@ -7,9 +7,9 @@ class ItemsBar{
       icon: Icon(Icons.home),
       label: 'الرئيسية',
     ),
-    BottomNavigationBarItem(
+  /*  BottomNavigationBarItem(
         icon: Icon(Icons.notifications_none_outlined),
-        label: 'اشعارات'),
+        label: 'اشعارات'),*/
     BottomNavigationBarItem(
         icon: Icon(Icons.flag_outlined), label: 'المهام'),
     BottomNavigationBarItem(

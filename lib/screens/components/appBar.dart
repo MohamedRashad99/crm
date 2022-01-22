@@ -1,9 +1,7 @@
 // ignore_for_file: file_names
 
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 import 'constants.dart';
 
@@ -87,18 +85,23 @@ customAppBar({required BuildContext context, required VoidCallback press} ) {
 }
 */
 
-AppBar customAppbar({String? title, required VoidCallback press, context}) {
+AppBar customAppbar(
+    {bool isIcons = false,
+    IconData? icons,
+    String? title,
+    required VoidCallback press,
+    context}) {
   return AppBar(
     backgroundColor: Colors.white,
     title: Center(
         child: Text(
-          '$title',
-          style: const TextStyle(
-              color: Colors.black,
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              fontFamily: "Cairo"),
-        )),
+      '$title',
+      style: const TextStyle(
+          color: Colors.black,
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+          fontFamily: "Cairo"),
+    )),
     actions: [
       InkWell(
         onTap: () {
@@ -115,9 +118,18 @@ AppBar customAppbar({String? title, required VoidCallback press, context}) {
           backgroundColor: Colors.white,
         ),
       ),
+      isIcons
+          ? InkWell(
+              onTap: () => Get.back(),
+              child: Icon(
+                icons,
+                color: Colors.black,
+              ))
+          : const SizedBox(),
+      //SizedBox(width: 5,),
     ],
     leading:
-    InkWell(onTap: press, child: Image.asset('assets/image/Vector.png')),
+        InkWell(onTap: press, child: Image.asset('assets/image/Vector.png')),
     elevation: 0,
   );
 }

@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 
 import 'pages/views/speed_dial.dart';
 
-
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -19,29 +17,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   static const List<Widget> _widgetOptions = <Widget>[
-     MainScreen(),
-    NotificationScreen(),
+    MainScreen(),
+   // NotificationScreen(),
     TasksScreen(),
     CalendarScreen(),
     SearchScreen(),
   ];
   int _selectedIndex = 0;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
+
   final ItemsBar _itemsBar = ItemsBar();
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-
-      body:  Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       floatingActionButton: FloatingActionView(),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       bottomNavigationBar: Directionality(

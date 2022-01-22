@@ -1,4 +1,6 @@
 import 'package:crm/screens/components/appBar.dart';
+import 'package:crm/screens/components/constants.dart';
+import 'package:crm/screens/components/drawer.dart';
 import 'package:flutter/material.dart';
 
 class TasksScreen extends StatefulWidget {
@@ -14,8 +16,12 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: kBackgroundButton,
       key: _scaffoldKey,
-      appBar: customAppbar( title: "المهام",
+      drawer: drawer(context: context),
+
+      appBar: customAppbar(
+          title: "المهام",
           press: () => _scaffoldKey.currentState!.openDrawer(),
           context: context
       ),
