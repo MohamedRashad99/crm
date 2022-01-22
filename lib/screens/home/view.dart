@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
-      floatingActionButton: FloatingActionView(),
+ /*     floatingActionButton: FloatingActionView(),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       bottomNavigationBar: Directionality(
         textDirection: TextDirection.rtl,
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: HexColor('#626262')),
           iconSize: 25,
         ),
-      ),
+      ),*/
     );
   }
 }

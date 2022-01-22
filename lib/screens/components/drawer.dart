@@ -42,7 +42,6 @@ Widget drawer({required context}) => Drawer(
                       ],
                     ),
 
-                    // child: Center(child: Text('Logo',style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold,fontFamily: "Cairo"),)),
                   ),
                 ),
               )),
@@ -70,7 +69,7 @@ Widget drawer({required context}) => Drawer(
                         width: 20,
                       ),
                       Text(
-                        'المشروعات',
+                        'الخدمات',
                         style: TextStyle(
                             fontFamily: 'Cairo',
                             color: HexColor('#2972B7'),

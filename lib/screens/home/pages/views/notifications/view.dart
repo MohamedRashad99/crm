@@ -3,6 +3,9 @@ import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/drawer.dart';
 import 'package:flutter/material.dart';
 
+import '../buttons_naviagtion_bar.dart';
+import '../speed_dial.dart';
+
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key? key}) : super(key: key);
 
@@ -12,6 +15,8 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreenState extends State<NotificationScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +37,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
+
     );
   }
 }
