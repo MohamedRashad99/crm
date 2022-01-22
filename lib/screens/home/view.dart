@@ -1,13 +1,15 @@
 import 'package:crm/screens/components/constants.dart';
-import 'package:crm/screens/home/page/views/buttons_naviagtion_bar.dart';
-import 'package:crm/screens/home/page/views/calendars/view.dart';
-import 'package:crm/screens/home/page/views/home/view.dart';
-import 'package:crm/screens/home/page/views/search/view.dart';
-import 'package:crm/screens/home/page/views/tasks/view.dart';
+import 'package:crm/screens/home/pages/views/buttons_naviagtion_bar.dart';
+import 'package:crm/screens/home/pages/views/calendars/view.dart';
+import 'package:crm/screens/home/pages/views/home/view.dart';
+import 'package:crm/screens/home/pages/views/notifications/view.dart';
+import 'package:crm/screens/home/pages/views/search/view.dart';
+import 'package:crm/screens/home/pages/views/tasks/view.dart';
 import 'package:flutter/material.dart';
 
-import 'page/views/notifications/view.dart';
-import 'page/views/speed_dial.dart';
+import 'pages/views/speed_dial.dart';
+
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
