@@ -26,7 +26,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: const Center(
         child: Text(
-          'Index 4: Search',
+          'Index 3: Search',
           style:  TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),

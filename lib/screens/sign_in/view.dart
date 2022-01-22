@@ -79,7 +79,7 @@ class SignInScreen extends StatelessWidget {
                     Center(
                         child: SmallButton(
                       onPressed: () {
-                        Get.to(() => const HomeScreen());
+                      //  Get.to(() => const HomeScreen());
                       },
                       title: 'Sign in ',
                       color: kPrimaryColor,

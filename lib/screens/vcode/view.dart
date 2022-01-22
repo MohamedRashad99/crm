@@ -88,7 +88,7 @@ class _VCodeForgetScreenState extends State<VCodeScreen> {
                     _buildSizedBox(height),
                     CustomButton(
                       onPressed: () {
-                        Get.off(() => const HomeScreen());
+                       // Get.off(() => const HomeScreen());
                       },
                       title: 'VERIFY',
                       color: kPrimaryColor,

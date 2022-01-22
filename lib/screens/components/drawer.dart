@@ -2,6 +2,7 @@ import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/home/pages/views/calendars/view.dart';
 import 'package:crm/screens/home/pages/views/home/view.dart';
 import 'package:crm/screens/home/pages/views/notifications/view.dart';
+import 'package:crm/screens/home/view.dart';
 import 'package:crm/screens/management_clients/view.dart';
 import 'package:crm/screens/projects/view.dart';
 import 'package:crm/screens/unites/view.dart';
@@ -49,14 +50,16 @@ Widget drawer({required context}) => Drawer(
             textDirection: TextDirection.rtl,
             child: Column(
               children: [
-                listTile(
-                    title: 'الرئيسية',
-                    icon: Icons.home,
-                    onTap: () => Get.to(() => const MainScreen())),
-                listTile(
-                    title: 'الاشعارات',
-                    icon: Icons.notifications,
-                    onTap: () => Get.to(() => const NotificationScreen())),
+                listTile( title: 'الرئيسية', icon: Icons.home,
+                    onTap: () {
+                      Navigator.pop(context);
+                      Get.to(() => const  MainScreen());
+                    }),
+                listTile(title: 'الاشعارات', icon: Icons.notifications,
+                    onTap: () {
+                      Navigator.pop(context);
+                      Get.to(() => const NotificationScreen());
+                    }),
                 ListTile(
                   title: Row(
                     children: [
@@ -68,28 +71,18 @@ Widget drawer({required context}) => Drawer(
                       const SizedBox(
                         width: 20,
                       ),
-                      Text(
-                        'الخدمات',
-                        style: TextStyle(
-                            fontFamily: 'Cairo',
-                            color: HexColor('#2972B7'),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      )
+                   textDescriptions(text: 'الخدمات'),
                     ],
                   ),
                   onTap: () {
+                    Navigator.pop(context);
                     Get.to(() => const ProjectsScreen());
                   },
                 ),
-                listTile(
-                    title: 'الوحدات',
-                    icon: Icons.bubble_chart,
+                listTile(title: 'الوحدات', icon: Icons.bubble_chart,
                     onTap: () => Get.to(() => const UnitesScreen())),
-                listTile(
-                    title: 'التقويم',
-                    icon: Icons.calendar_today,
-                    onTap: () => Get.to(() => const CalendarScreen())),
+                listTile(title: 'التقويم', icon: Icons.calendar_today,
+                    onTap: () => Get.to(() => const  CalendarScreen())),
                 ListTile(
                   title: Row(
                     children: [
@@ -102,17 +95,11 @@ Widget drawer({required context}) => Drawer(
                       const SizedBox(
                         width: 20,
                       ),
-                      Text(
-                        'ادارة العملاء',
-                        style: TextStyle(
-                            fontFamily: 'Cairo',
-                            color: HexColor('#2972B7'),
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      )
+                     textDescriptions(text:  'ادارة العملاء'),
                     ],
                   ),
                   onTap: () {
+                    Navigator.pop(context);
                     Get.to(() => const ManagementClientsScreen());
                   },
                 ),
@@ -171,11 +158,11 @@ Widget drawer({required context}) => Drawer(
 Text textDescriptions({String? text}) {
   return Text(
     text!,
-    style: TextStyle(
+    style:const TextStyle(
         fontFamily: 'Cairo',
-        fontSize: 14,
+        fontSize: 18,
         fontWeight: FontWeight.bold,
-        color: HexColor('#626262')),
+        color: kPrimaryColor),
   );
 }
 

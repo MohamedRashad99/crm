@@ -68,7 +68,7 @@ class ResetPasswordScreen extends StatelessWidget {
                     ),
                     spacer(height),
                    Center(child: SmallButton(onPressed: (){
-                     Get.off(() => const HomeScreen());
+                    // Get.off(() => const HomeScreen());
                    }, title: 'Sign in',color: kPrimaryColor,)),
                   ],
                 ),

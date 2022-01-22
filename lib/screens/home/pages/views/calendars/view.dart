@@ -24,11 +24,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   final ItemsBar _itemsBar = ItemsBar();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundButton,
-
       drawer: drawer(context: context),
       key: _scaffoldKey,
       appBar: customAppbar(
@@ -37,11 +37,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
           context: context),
       body: const Center(
         child: Text(
-          'Index 3: Calenders',
+          'Index 2: Calenders',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
-     floatingActionButton: FloatingActionView(),
+      floatingActionButton: FloatingActionView(),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       bottomNavigationBar: Directionality(
         textDirection: TextDirection.rtl,

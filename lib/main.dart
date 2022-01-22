@@ -1,4 +1,5 @@
 
+import 'package:crm/screens/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -23,9 +24,9 @@ class CRM extends StatelessWidget{
   const CRM({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return const  GetMaterialApp(
+    return   GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: MainScreen(),
       );
 
   }
