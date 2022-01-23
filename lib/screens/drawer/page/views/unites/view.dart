@@ -1,16 +1,16 @@
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
-import '../drawer/view.dart';
+import '../../../view.dart';
 import 'package:flutter/material.dart';
 
-class ProjectsScreen extends StatefulWidget {
-  const ProjectsScreen({Key? key}) : super(key: key);
+class UnitesScreen extends StatefulWidget {
+  const UnitesScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProjectsScreen> createState() => _MainScreenState();
+  State<UnitesScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<ProjectsScreen> {
+class _MainScreenState extends State<UnitesScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -22,12 +22,12 @@ class _MainScreenState extends State<ProjectsScreen> {
       appBar: customAppbar(
           isIcons: true,
           icons: Icons.arrow_forward_ios,
-          title: "المشروعات",
+          title: "الوحدات",
           press: () => _scaffoldKey.currentState!.openDrawer(),
           context: context),
       body: const Center(
         child: Text(
-          'Index 0: Projects',
+          'Index 0: Unites',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),

@@ -15,15 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  final ItemsBar _itemsBar = ItemsBar();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,32 +32,32 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
-      floatingActionButton: FloatingActionView(),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      bottomNavigationBar: Directionality(
-        textDirection: TextDirection.rtl,
-        child: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              _onItemTapped(index);
-            });
-          },
-          items: _itemsBar.itemsBar,
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: TextStyle(
-              fontFamily: 'Cairo',
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: HexColor('#2972B7')),
-          unselectedLabelStyle: TextStyle(
-              fontFamily: 'Cairo',
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: HexColor('#626262')),
-          iconSize: 25,
-        ),
-      ),
+      // floatingActionButton: FloatingActionView(),
+      // floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      // bottomNavigationBar: Directionality(
+      //   textDirection: TextDirection.rtl,
+      //   child: BottomNavigationBar(
+      //     currentIndex: _selectedIndex,
+      //     onTap: (index) {
+      //       setState(() {
+      //         _onItemTapped(index);
+      //       });
+      //     },
+      //     items: _itemsBar.itemsBar,
+      //     type: BottomNavigationBarType.fixed,
+      //     selectedLabelStyle: TextStyle(
+      //         fontFamily: 'Cairo',
+      //         fontSize: 10,
+      //         fontWeight: FontWeight.bold,
+      //         color: HexColor('#2972B7')),
+      //     unselectedLabelStyle: TextStyle(
+      //         fontFamily: 'Cairo',
+      //         fontSize: 10,
+      //         fontWeight: FontWeight.bold,
+      //         color: HexColor('#626262')),
+      //     iconSize: 25,
+      //   ),
+      // ),
     );
   }
 }

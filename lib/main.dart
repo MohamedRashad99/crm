@@ -1,5 +1,6 @@
 
 import 'package:crm/screens/home/view.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -17,14 +18,16 @@ Future<void> main() async {
   await Nations.boot();
   await LocalStorage.boot();
 
-  runApp( const CRM());
+  runApp(  DevicePreview(
+      enabled: true,
+      builder: (context) => const CRM()));
 }
 
 class CRM extends StatelessWidget{
   const CRM({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return   GetMaterialApp(
+    return  const GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home: MainScreen(),
       );

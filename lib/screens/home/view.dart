@@ -7,8 +7,8 @@ import 'package:crm/screens/home/pages/views/tasks/view.dart';
 import 'package:flutter/material.dart';
 import 'pages/views/speed_dial.dart';
 class MainScreen extends StatefulWidget {
- // final int index;
-   const MainScreen({Key? key,  }) : super(key: key);
+   final int index;
+   const MainScreen({Key? key, this.index =0 }) : super(key: key);
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -16,7 +16,6 @@ class _MainScreenState extends State<MainScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
    HomeScreen(),
    // NotificationScreen(),
-   // MainScreen(),
     TasksScreen(),
     CalendarScreen(),
     SearchScreen(),
@@ -27,28 +26,17 @@ class _MainScreenState extends State<MainScreen> {
       _selectedIndex = index;
     });
   }
-  // getIndex() {
-  //     // ignore: unnecessary_null_comparison
-  //     if (widget.index == null) {
-  //       setState(() {
-  //         _selectedIndex = 0;
-  //       });
-  //     } else {
-  //       setState(() {
-  //         _selectedIndex = widget.index;
-  //       });
-  //     }
-  //   }
+
   @override
   void initState() {
-   // getIndex();
+   _selectedIndex = widget.index;
     super.initState();}
   final ItemsBar _itemsBar = ItemsBar();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
-/*      floatingActionButton: FloatingActionView(),
+      floatingActionButton: FloatingActionView(),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       bottomNavigationBar: Directionality(
         textDirection: TextDirection.rtl,
@@ -74,7 +62,7 @@ class _MainScreenState extends State<MainScreen> {
               color: HexColor('#626262')),
           iconSize: 25,
         ),
-      ),*/
+      ),
     );
   }
 }

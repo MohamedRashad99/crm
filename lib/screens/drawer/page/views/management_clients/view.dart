@@ -1,6 +1,6 @@
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
-import '../drawer/view.dart';
+import '../../../view.dart';
 import 'package:crm/screens/home/pages/views/speed_dial.dart';
 import 'package:flutter/material.dart';
 

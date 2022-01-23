@@ -31,13 +31,14 @@ dependencies:
     sdk: flutter
 
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   nations: ^0.0.4
 
   carousel_slider: ^4.0.0
   dio: ^4.0.0
+  device_preview: ^1.0.0
+  laravel_exception: ^0.0.4
+  edge_alert: ^0.0.1
   smooth_page_indicator: ^1.0.0+2
   flutter_svg: ^1.0.0
   drawer_swipe: ^0.0.4
