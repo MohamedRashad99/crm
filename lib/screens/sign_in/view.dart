@@ -4,7 +4,6 @@ import 'package:crm/screens/components/customTextFeildCrmPassword.dart';
 import 'package:crm/screens/components/donotHave.dart';
 import 'package:crm/screens/components/smallButton.dart';
 import 'package:crm/screens/forget_password/view.dart';
-import 'package:crm/screens/home/view.dart';
 import 'package:crm/screens/sign_up/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

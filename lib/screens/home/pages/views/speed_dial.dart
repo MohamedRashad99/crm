@@ -2,12 +2,17 @@
 
 import 'package:crm/screens/add_new_client/page/views/drop_down_items.dart';
 import 'package:crm/screens/add_new_client/view.dart';
+import 'package:crm/screens/add_new_task/page/views/search/search.dart';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/customTextFeild.dart';
 import 'package:crm/screens/components/new_client_textfield.dart';
 import 'package:crm/screens/components/notes_textformfield.dart';
+import 'package:date_time_picker/date_time_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -23,99 +28,9 @@ class _FloatingActionViewState extends State<FloatingActionView> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    void addNewClientShowModalBottomSheet() {
-      showModalBottomSheet(
-        isScrollControlled: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        context: context,
-        builder: (_) {
-          // Timer(Duration(seconds: 20), () {
-          //   Navigator.of(context).pop();
-          //   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-          // });
-          return Container(
-            height: height * 0.9,
-            width: width,
-            margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
-            child: StreamBuilder<Object>(
-                stream: null,
-                builder: (context, snapshot) {
-                  return Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: SingleChildScrollView(
-                      physics: BouncingScrollPhysics(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: height*0.02,),
-                          const Text(
-                            'إضافة عميل جديد',
-                            style: TextStyle(
-                                fontFamily: 'Cairo',
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                          titleOfTextField(title: '* الإسم'),
-                          NewClientTextField(
-                            onTap: () {},
-                            hint: 'أضف أسم العميل ',
-                          ),
-                          titleOfTextField(title: '* رقم الهاتف'),
-                          NewClientTextField(
-                            onTap: () {},
-                            hint: 'أضف رقم الهاتف ',
-                          ),
-                          titleOfTextField(title: '* رقم هاتف اّخر'),
-                          NewClientTextField(
-                            onTap: () {},
-                            hint: 'أختياري',
-                          ),
-                          titleOfTextField(title: '* العنوان'),
-                          NewClientTextField(
-                            onTap: () {},
-                            hint: 'أضف العنوان ',
-                          ),
-                          titleOfTextField(title: '* البريد الإلكتروني'),
-                          NewClientTextField(
-                            onTap: () {},
-                            hint: 'أضف البريد الإلكتروني',
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  titleOfTextField(title: '* فئة العميل'),
-                                   DropDownList(width: width*0.4,),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  titleOfTextField(title: '* حالة العميل'),
-                                   DropDownList(width: width*0.4,),
-                                ],
-                              )
-                            ],
-                          ),
-                          titleOfTextField(title: '* مصدر العميل'),
-                          DropDownList(width: width*0.9,),
-                          SizedBox(height: height*0.02,),
-                          NotesCustomTextField(onTap: (){},hint: 'ملاحظات',),
-                        ],
-                      ),
-                    ),
-                  );
-                }),
-          );
-        },
-      );
-    }
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 4),
+      padding: const EdgeInsets.only(bottom: 4,right: 10),
       child: SpeedDial(
         foregroundColor: Colors.white,
         overlayColor: kBackgroundButton,
@@ -171,7 +86,7 @@ class _FloatingActionViewState extends State<FloatingActionView> {
             foregroundColor: HexColor('#2972B7'),
             label: 'مهمة جديدة',
             onTap: () {
-              // modalBottomSheetMenuInTaskList(context);
+              addNewTaskShowModalBottomSheet(context ,height,width);
             },
           ),
           SpeedDialChild(
@@ -188,10 +103,8 @@ class _FloatingActionViewState extends State<FloatingActionView> {
             foregroundColor: HexColor('#2972B7'),
             label: 'عميل جديد',
             onTap: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => AddLead()));
-              //  Get.to(()=>const AddNewClient());
-              addNewClientShowModalBottomSheet();
+
+              addNewClientShowModalBottomSheet(context ,height,width);
             },
           ),
         ],
@@ -244,4 +157,275 @@ class _FloatingActionViewState extends State<FloatingActionView> {
     FloatingActionButtonLocation.centerTop,
     FloatingActionButtonLocation.endTop,
   ];
+  void addNewClientShowModalBottomSheet(BuildContext context , double height ,double width , ) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      context: context,
+      builder: (_) {
+        // Timer(Duration(seconds: 20), () {
+        //   Navigator.of(context).pop();
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        // });
+        return Container(
+          height: height * 0.9,
+          width: width,
+          margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+          child: StreamBuilder<Object>(
+              stream: null,
+              builder: (context, snapshot) {
+                return Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: height*0.02,),
+                        const Text(
+                          'إضافة عميل جديد',
+                          style: TextStyle(
+                              fontFamily: 'Cairo',
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black),
+                        ),
+                        titleOfTextField(title: '* الإسم'),
+                        NewClientTextField(
+                          onTap: () {},
+                          hint: 'أضف أسم العميل ',
+                        ),
+                        titleOfTextField(title: '* رقم الهاتف'),
+                        NewClientTextField(
+                          onTap: () {},
+                          hint: 'أضف رقم الهاتف ',
+                        ),
+                        titleOfTextField(title: '* رقم هاتف اّخر'),
+                        NewClientTextField(
+                          onTap: () {},
+                          hint: 'أختياري',
+                        ),
+                        titleOfTextField(title: '* العنوان'),
+                        NewClientTextField(
+                          onTap: () {},
+                          hint: 'أضف العنوان ',
+                        ),
+                        titleOfTextField(title: '* البريد الإلكتروني'),
+                        NewClientTextField(
+                          onTap: () {},
+                          hint: 'أضف البريد الإلكتروني',
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                titleOfTextField(title: '* فئة العميل'),
+                                DropDownList(width: width*0.4,),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                titleOfTextField(title: '* حالة العميل'),
+                                DropDownList(width: width*0.4,),
+                              ],
+                            )
+                          ],
+                        ),
+                        titleOfTextField(title: '* مصدر العميل'),
+                        DropDownList(width: width*0.9,),
+                        SizedBox(height: height*0.02,),
+                        NotesCustomTextField(onTap: (){},hint: 'ملاحظات',),
+                        InkWell(onTap: ()=>Navigator.of(context).pop(),child: Align(alignment: AlignmentDirectional.bottomEnd,child: Image.asset('assets/image/submit.png',height: 40,width: 40,))),
+                      ],
+                    ),
+                  ),
+                );
+              }),
+        );
+      },
+    );
+  }
+
+
+  void addNewTaskShowModalBottomSheet(BuildContext context , double height ,double width , ) {
+    showModalBottomSheet(
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      context: context,
+      builder: (_) {
+        // Timer(Duration(seconds: 20), () {
+        //   Navigator.of(context).pop();
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        // });
+        return Container(
+          height: height * 0.4,
+          width: width,
+          margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+          child: StreamBuilder<Object>(
+              stream: null,
+              builder: (context, snapshot) {
+                return Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: height*0.02,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                          children: const[
+                             Text(
+                              'إضافة مهمة جديدة',
+                              style: TextStyle(
+                                  fontFamily: 'Cairo',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                            Icon(Icons.flag_outlined ,color: kPrimaryColor,)
+                          ],
+                        ),
+                        SizedBox(height: height*0.02,),
+                        NotesCustomTextField(onTap: (){},hint: 'ملاحظات',),
+                        Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: ()async{
+
+                               await showDialog<String>(
+                                  context: context,
+
+                                  builder: (BuildContext context) =>  CupertinoAlertDialog(
+                                      title:    Card(
+                                      shape:const  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                         Radius.circular(10),),),
+                                        child:  Directionality(textDirection: TextDirection.rtl,child: SearchOnClient()),
+                                      ),
+                                      content: Card(
+                                        child: SizedBox(
+                                          height: height*0.6,
+                                          child: ListView.builder(
+                                              itemCount: 9,
+                                              itemBuilder: (context ,int index){
+                                            return ListTile(  onTap: (){},trailing: titleOfTextField(title: 'عميل - 1'),leading: titleOfTextField(title: '01097758516'),
+                                            );
+                                          }),
+                                        ),
+                                      ),
+                                      // actions: <Widget>[
+                                      //   TextButton(
+                                      //     onPressed: () => Navigator.pop(context, 'Cancel'),
+                                      //     child: const Text('Cancel'),
+                                      //   ),
+                                      //   TextButton(
+                                      //     onPressed: () => Navigator.pop(context, 'OK'),
+                                      //     child: const Text('OK'),
+                                      //   ),
+                                      // ],
+                                    ),
+                                  );
+
+
+
+
+
+                              },
+                              child: Container(
+                                height: height*0.05,
+                                width: width*0.2,
+                                decoration: BoxDecoration(
+                                  color: kBackgroundButton,
+                                  borderRadius: BorderRadius.circular(8),
+                              ),
+                                child:const  Center(child: Text('أختر العميل' , style: TextStyle(
+                                    fontFamily: 'Cairo',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.normal,
+                                    color:kTextColor),)),
+                              ),
+                            ),
+                            InkWell(onTap: ()async{
+
+                              await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(2021, 1, 1),
+                                  lastDate: DateTime(2030, 1, 1),
+                              //     if(picked != null && picked != selectedDate){
+                              //   setState(() {
+                              //     selectedDate = picked;
+                              //   });
+                              // }
+
+                                );
+
+                            },child:const Icon(Icons.date_range_outlined ,color: kPrimaryColor,)),
+                            Container(
+                              height: height*0.05,
+                              width: width*0.2,
+                              decoration: BoxDecoration(
+                                color: kBackgroundButton,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child:const  Center(child: Text('عرض التاريخ' , style: TextStyle(
+                                  fontFamily: 'Cairo',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.normal,
+                                  color:kTextColor),)),
+                            ),
+                            InkWell(onTap: ()async{
+
+                              await showTimePicker(
+                                context: context,
+                                initialTime: TimeOfDay.now(),
+                                confirmText: 'Ok',
+                                cancelText: 'Cancel',
+
+
+                                // builder: (BuildContext context, Widget child) {
+                                //   return Directionality(
+                                //     textDirection: TextDirection.rtl,
+                                //     child: child,
+                                //   );
+                                // },
+                              );
+
+                            },child:const Icon(Icons.access_alarm_outlined ,color: kPrimaryColor,)),
+                            Container(
+                              height: height*0.05,
+                              width: width*0.2,
+                              decoration: BoxDecoration(
+                                color: kBackgroundButton,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child:const  Center(child: Text('عرض الساعه' , style: TextStyle(
+                                  fontFamily: 'Cairo',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.normal,
+                                  color:kTextColor),)),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: height*0.02,),
+                        InkWell(onTap: ()=>Navigator.of(context).pop(),child: Align(alignment: AlignmentDirectional.bottomEnd,child: Image.asset('assets/image/submit.png',height: 40,width: 40,))),
+                      ],
+                    ),
+                  ),
+                );
+              }),
+        );
+      },
+    );
+  }
+
+
 }

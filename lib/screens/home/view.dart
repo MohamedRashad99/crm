@@ -1,21 +1,21 @@
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/home/pages/views/buttons_naviagtion_bar.dart';
-import 'package:crm/screens/home/pages/views/calendars/view.dart';
-import 'package:crm/screens/home/pages/views/home/view.dart';
-import 'package:crm/screens/home/pages/views/search/view.dart';
-import 'package:crm/screens/home/pages/views/tasks/view.dart';
+
 import 'package:flutter/material.dart';
+import 'pages/views/calendars/view.dart';
+import 'pages/views/home/view.dart';
+import 'pages/views/search/view.dart';
 import 'pages/views/speed_dial.dart';
-class MainScreen extends StatefulWidget {
+import 'pages/views/tasks/view.dart';
+class HomeTabScreen extends StatefulWidget {
    final int index;
-   const MainScreen({Key? key, this.index =0 }) : super(key: key);
+   const HomeTabScreen({Key? key, this.index =0 }) : super(key: key);
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<HomeTabScreen> createState() => _HomeTabScreenState();
 }
-class _MainScreenState extends State<MainScreen> {
+class _HomeTabScreenState extends State<HomeTabScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
    HomeScreen(),
-   // NotificationScreen(),
     TasksScreen(),
     CalendarScreen(),
     SearchScreen(),

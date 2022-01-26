@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:crm/screens/profile/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -105,8 +106,7 @@ AppBar customAppbar(
     actions: [
       InkWell(
         onTap: () {
-          // Navigator.push(context,
-          //     MaterialPageRoute(builder: (context) => ProfileScreen()));
+       Get.to(()=>  ProfileScreen());
         },
         child: CircleAvatar(
           child: Image.asset(

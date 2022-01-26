@@ -29,7 +29,11 @@ const khTextColor = Color(0xFF323232);*/
 
 
 
-
+Widget customDivider(double height) => Container(
+  width: double.infinity,
+  height: height,
+  color: Colors.grey[300],
+);
 
 
 final headingStyle = TextStyle(

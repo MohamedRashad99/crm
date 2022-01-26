@@ -1,7 +1,6 @@
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/customTextFeildCrmPassword.dart';
 import 'package:crm/screens/components/smallButton.dart';
-import 'package:crm/screens/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:queen_validators/queen_validators.dart';

@@ -1,7 +1,6 @@
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/smallButton.dart';
 import 'package:crm/screens/drawer/page/views/list_tile_with_image.dart';
-import 'package:crm/screens/home/pages/views/calendars/view.dart';
 import 'package:crm/screens/home/pages/views/notifications/view.dart';
 import 'package:crm/screens/home/view.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +28,7 @@ Widget drawer({required context}) => Drawer(
                     icon: Icons.home,
                     onTap: () {
                       Navigator.pop(context);
-                      Get.to(() => const MainScreen(index: 0,));
+                      Get.to(() => const HomeTabScreen(index: 0,));
                     }),
                 ListTitleNormal(
                     title: 'الاشعارات',
@@ -52,7 +51,12 @@ Widget drawer({required context}) => Drawer(
                 ListTitleNormal(
                     title: 'التقويم',
                     icon: Icons.calendar_today,
-                    onTap: () => Get.to(() => const MainScreen(index: 2,))),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>const HomeTabScreen(index: 2,) ));
+                     // Get.to(() => const HomeTabScreen(index: 2,));
+                    }),
+                  //  onTap: () => Get.to(() => const HomeTabScreen(index: 2,))),
                 ListTileWithImage(
                     title: 'ادارة العملاء',
                     imagePath: 'assets/image/Vector111.png',
