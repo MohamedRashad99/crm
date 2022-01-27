@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    //  backgroundColor: kBackgroundButton,
+    backgroundColor: kHomeColor,
       drawer: drawer(context: context),
       key: _scaffoldKey,
       appBar: customAppbar(

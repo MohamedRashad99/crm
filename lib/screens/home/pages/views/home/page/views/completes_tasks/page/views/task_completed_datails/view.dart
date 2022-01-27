@@ -30,7 +30,7 @@ padding: EdgeInsets.symmetric(horizontal: 12),
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: height*0.02,),
-              Text(
+              const Text(
                 'إجتماع مناقشة العرض المقدم من العميل',
                 style:  TextStyle(
                     fontFamily: 'Cairo',
@@ -42,8 +42,8 @@ padding: EdgeInsets.symmetric(horizontal: 12),
               Row (
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.alarm_add_sharp,color: kPrimaryColor,),
-                    Text(
+                    const   Icon(Icons.alarm_add_sharp,color: kPrimaryColor,),
+                    const   Text(
                       ' Due-date ',
                       style:  TextStyle(
                           fontFamily: 'Cairo',
@@ -52,7 +52,7 @@ padding: EdgeInsets.symmetric(horizontal: 12),
                           color: Colors.black),
                     ),
                     SizedBox(width: width*0.05,),
-                    Text(
+                    const  Text(
                       '11 :am ',
                       style:  TextStyle(
                           fontFamily: 'Cairo',
@@ -93,9 +93,9 @@ padding: EdgeInsets.symmetric(horizontal: 12),
                 ],
               ),
               SizedBox(height: height*0.04,),
-              Text(
+              const  Text(
                 'ملاحظات',
-                style: const TextStyle(
+                style:  TextStyle(
                     fontFamily: 'Cairo',
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

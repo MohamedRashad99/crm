@@ -277,20 +277,15 @@ class _FloatingActionViewState extends State<FloatingActionView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: height*0.02,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                          children: const[
-                             Text(
-                              'إضافة مهمة جديدة',
-                              style: TextStyle(
-                                  fontFamily: 'Cairo',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
-                            ),
-                            Icon(Icons.flag_outlined ,color: kPrimaryColor,)
-                          ],
+                        Center(
+                          child: Text(
+                            'إضافة مهمة جديدة',
+                            style: TextStyle(
+                                fontFamily: 'Cairo',
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
                         ),
                         SizedBox(height: height*0.02,),
                         NotesCustomTextField(onTap: (){},hint: 'ملاحظات',),

@@ -1,10 +1,11 @@
 import 'package:crm/screens/components/CustomTextFeildCrmEmail.dart';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/customTextFeildCrmPassword.dart';
+import 'package:crm/screens/components/customTextFieldCrmPhone.dart';
 import 'package:crm/screens/components/donotHave.dart';
 import 'package:crm/screens/components/smallButton.dart';
 import 'package:crm/screens/forget_password/view.dart';
-import 'package:crm/screens/sign_up/view.dart';
+import 'package:crm/screens/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:queen_validators/queen_validators.dart';
@@ -36,8 +37,8 @@ class SignInScreen extends StatelessWidget {
                   // mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomTextFieldCrmEmail(
-                      dIcon: Icons.email,
+                    CustomTextFieldCrmPhone(
+                      dIcon: Icons.phone_android,
                       label: true,
                       hint: 'Enter Your Phone Please ..? ',
                       validator: qValidator([
@@ -48,7 +49,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                     buildSizedBox(height),
                     CustomTextFieldCRM(
-                      label: true,
+
                       hint: 'Password ..! ',
                       icon: Icons.lock_outline,
                       dIcon: Icons.lock_outline,
@@ -78,17 +79,12 @@ class SignInScreen extends StatelessWidget {
                     Center(
                         child: SmallButton(
                       onPressed: () {
-                      //  Get.to(() => const HomeScreen());
+                       Get.to(() =>const HomeTabScreen());
                       },
                       title: 'Sign in ',
                       color: kPrimaryColor,
                     )),
-                    Center(
-                        child: DoNotHave(
-                      have: 'Don`t have an account? ',
-                      text: 'Sign up',
-                      route: () => Get.to(() => const SignUpScreen()),
-                    )),
+
                   ],
                 ),
               ),

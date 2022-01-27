@@ -1,5 +1,6 @@
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
+import 'package:crm/screens/home/pages/views/speed_dial.dart';
 import 'package:flutter/material.dart';
 
 import '../../../view.dart';
@@ -32,6 +33,8 @@ class _MainScreenState extends State<ProjectsScreen> {
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
+      floatingActionButton: FloatingActionView(),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
   }
 }

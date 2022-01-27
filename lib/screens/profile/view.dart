@@ -260,7 +260,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }) {
     return  ListTile(
 
-
     contentPadding: EdgeInsets.zero,
       leading:  Icon(
         icon,

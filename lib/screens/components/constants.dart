@@ -6,6 +6,10 @@ const Color kTextColor = Color(0xFF626262);
 const kBackgroundColor = Color(0xFFB1C5D8);
 const kBackgroundButton = Color(0xFFE6E6E6);
 
+const kSkyButton = Color(0xFFDDEFFF);
+
+const kRose = Color(0xFFFFC5B9);
+
 
 const Color kHomeColor = Color(0xFFF9F9F9);
 const Color kRoundColor = Color(0xFFFEBD2F);
@@ -33,6 +37,11 @@ Widget customDivider(double height) => Container(
   width: double.infinity,
   height: height,
   color: Colors.grey[300],
+);
+Widget customDivider2(double height) => Container(
+  width: double.infinity,
+  height: height,
+  color: Colors.white,
 );
 
 

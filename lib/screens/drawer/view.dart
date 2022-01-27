@@ -1,7 +1,8 @@
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/smallButton.dart';
 import 'package:crm/screens/drawer/page/views/list_tile_with_image.dart';
-import 'package:crm/screens/home/pages/views/notifications/view.dart';
+import 'package:crm/screens/drawer/page/views/notifications/view.dart';
+import 'package:crm/screens/drawer/page/views/services/view.dart';
 import 'package:crm/screens/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,6 +40,13 @@ Widget drawer({required context}) => Drawer(
                     }),
                 ListTileWithImage(
                     title: 'الخدمات',
+                    imagePath: 'assets/image/touch_app.png',
+                    onTap: () {
+                      Navigator.pop(context);
+                      Get.to(() => const ServicesScreen());
+                    }),
+                ListTileWithImage(
+                    title: 'المشروعات',
                     imagePath: 'assets/image/trending_up.png',
                     onTap: () {
                       Navigator.pop(context);
