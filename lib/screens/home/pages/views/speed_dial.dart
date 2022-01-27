@@ -304,11 +304,11 @@ class _FloatingActionViewState extends State<FloatingActionView> {
                                   context: context,
 
                                   builder: (BuildContext context) =>  CupertinoAlertDialog(
-                                      title:    Card(
-                                      shape:const  RoundedRectangleBorder(
+                                      title:    const Card(
+                                      shape:RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                          Radius.circular(10),),),
-                                        child:  Directionality(textDirection: TextDirection.rtl,child: SearchOnClient()),
+                                        child:  Directionality(textDirection: TextDirection.rtl,child: SearchOnClient(hintText: 'البحث',)),
                                       ),
                                       content: Card(
                                         child: SizedBox(

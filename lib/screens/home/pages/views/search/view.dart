@@ -1,3 +1,4 @@
+import 'package:crm/screens/add_new_task/page/views/search/search.dart';
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
 import '../../../../drawer/view.dart';
@@ -15,21 +16,47 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return  Scaffold(
-      backgroundColor: kBackgroundButton,
+
+      backgroundColor: kHomeColor,
 
       drawer: drawer(context: context),
       key: _scaffoldKey,
-      appBar: customAppbar( title: "البحث",
+      appBar: customAppbar(
+        icons: Icons.arrow_forward_ios,
+          isIcons: true,
+          title: "البحث",
           press: () => _scaffoldKey.currentState!.openDrawer(),
           context: context
       ),
-      body: const Center(
-        child: Text(
-          'Index 3: Search',
-          style:  TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+      body: Directionality(
+        textDirection:TextDirection.rtl ,
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+
+          child: Column(
+            children: [
+            const Center(
+              child: Text(
+                'عن ماذا تبحث',
+                style:  TextStyle(
+                    fontFamily: 'Cairo',
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: kBlackText),
+              ),
+            ),
+            SizedBox(height: height*0.03,),
+            const SearchOnClient(hintText: 'بحث مشروعات'),
+              SizedBox(height: height*0.01,),
+              const SearchOnClient(hintText: 'بحث عن العملاء'),
+
+          ],),
         ),
       ),
+
     );
   }
 }

@@ -54,7 +54,7 @@ Widget drawer({required context}) => Drawer(
                     onTap: () {
                       Navigator.pop(context);
                       Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>const HomeTabScreen(index: 2,) ));
-                     // Get.to(() => const HomeTabScreen(index: 2,));
+                      //Get.to(() => const HomeTabScreen(index: 2,));
                     }),
                   //  onTap: () => Get.to(() => const HomeTabScreen(index: 2,))),
                 ListTileWithImage(

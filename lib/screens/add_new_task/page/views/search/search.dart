@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 class SearchOnClient extends StatelessWidget {
+  final String hintText;
+
+  const SearchOnClient({Key? key, required this.hintText}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -16,7 +20,7 @@ class SearchOnClient extends StatelessWidget {
         textInputAction: TextInputAction.search,
         autofocus: true,
         decoration: InputDecoration(
-          hintText: 'البحث',
+          hintText: hintText,
 
           prefixIcon: IconButton(
               onPressed: () => Get.back(),

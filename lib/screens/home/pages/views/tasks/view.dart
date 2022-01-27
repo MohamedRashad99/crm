@@ -1,5 +1,6 @@
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
+import 'package:crm/screens/home/pages/views/home/page/views/sub_tab_bar_content.dart';
 import '../../../../drawer/view.dart';
 import 'package:flutter/material.dart';
 
@@ -25,12 +26,7 @@ class _TasksScreenState extends State<TasksScreen> {
           press: () => _scaffoldKey.currentState!.openDrawer(),
           context: context
       ),
-      body: const Center(
-        child:  Text(
-          'Index 1: Tasks',
-          style:  TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-        ),
-      ),
+      body: SubTabBar()
     );
   }
 }
