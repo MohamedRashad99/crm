@@ -41,15 +41,12 @@ class _MainScreenState extends State<ServicesDetailsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: height * 0.04,
-            ),
-
+            buildSizedBox(height: height * 0.04),
             Center(
               child: Container(
                 color: kSkyButton,
                 height: height * 0.069,
-                width: width*0.5,
+                width: width * 0.5,
                 child: const Center(
                   child: Text(
                     'السعر يبدأ من 3000 ج',
@@ -62,23 +59,29 @@ class _MainScreenState extends State<ServicesDetailsScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: height * 0.04,
-            ),
+            buildSizedBox(height: height * 0.04),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 18),
-              child: Text(KeysConfig.kLoramText , style: TextStyle(
-                  fontFamily: 'Cairo',
-                  fontSize: 14,
-                  fontWeight: FontWeight.normal,
-                  color: kBlackText),
-              ),),
-
+              margin: const EdgeInsets.symmetric(horizontal: 18),
+              child: const Text(
+                KeysConfig.kLoramText,
+                style: TextStyle(
+                    fontFamily: 'Cairo',
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    color: kBlackText),
+              ),
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionView(),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
+  }
+
+  SizedBox buildSizedBox({required double height}) {
+    return SizedBox(
+            height: height,
+          );
   }
 }

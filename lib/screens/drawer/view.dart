@@ -55,7 +55,10 @@ Widget drawer({required context}) => Drawer(
                 ListTitleNormal(
                     title: 'الوحدات',
                     icon: Icons.bubble_chart,
-                    onTap: () => Get.to(() => const UnitesScreen())),
+                    onTap: (){
+                      Navigator.pop(context);
+                      Get.to(() => const UnitesScreen());
+                    }) ,
                 ListTitleNormal(
                     title: 'التقويم',
                     icon: Icons.calendar_today,

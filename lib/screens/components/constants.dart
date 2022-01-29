@@ -1,23 +1,24 @@
+import 'package:crm/screens/components/smallButtonSizer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xFF2972B7);
+const kSecondaryColor = Color(0xFF2972B7);
 const Color kAccentColor = Color(0xFFFFAE48);
 const Color kTextColor = Color(0xFF626262);
 const kBackgroundColor = Color(0xFFB1C5D8);
 const kBackgroundButton = Color(0xFFE6E6E6);
-
 const kSkyButton = Color(0xFFDDEFFF);
-
 const kRose = Color(0xFFFFC5B9);
-
-
+const kButtonGreen = Color(0xFF29B784);
+const kButtonGreenDark = Color(0xFF008000);
+const kButtonRedDark = Color(0xFFC50B0B);
 const Color kHomeColor = Color(0xFFF9F9F9);
 const Color kRoundColor = Color(0xFFFEBD2F);
-const Color kLightText =Color(0xFFE6E6E6);
-const Color kBlackText =Color(0xFF000000);
+const Color kLightText = Color(0xFFE6E6E6);
+const Color kBlackText = Color(0xFF000000);
 
-const Color kRoundBorderColor = Color.fromRGBO(220, 220, 220,1);
-
+const Color kRoundBorderColor = Color.fromRGBO(220, 220, 220, 1);
 
 /*const kGreenColor = Color(0xFF03AB6A);
 const kLightGreenColor = Color(0xFF099861);
@@ -29,21 +30,17 @@ const kPrimaryFDarkColor = Color(0xFF0A4E75);
 const kPrimaryBlueColor = Color(0xFF3080D1);
 const khTextColor = Color(0xFF323232);*/
 
-
-
-
-
 Widget customDivider(double height) => Container(
-  width: double.infinity,
-  height: height,
-  color: Colors.grey[300],
-);
-Widget customDivider2(double height) => Container(
-  width: double.infinity,
-  height: height,
-  color: Colors.white,
-);
+      width: double.infinity,
+      height: height,
+      color: Colors.grey[300],
+    );
 
+Widget customDivider2(double height) => Container(
+      width: double.infinity,
+      height: height,
+      color: Colors.white,
+    );
 
 final headingStyle = TextStyle(
   fontSize: getProportionateScreenWidth(28),
@@ -78,13 +75,125 @@ spaceW(double width) {
   return SizedBox(width: width);
 }
 
+Future <void> showConfirmationDialog (BuildContext context){
+  double height = MediaQuery.of(context).size.height;
+  double width = MediaQuery.of(context).size.width;
+  return    showDialog<String> (
+    context: context,
+
+    builder: (BuildContext context) =>  CupertinoAlertDialog(
+      title: Image.asset(
+        'assets/image/icons8-handshake-100 1.png',
+        width: width*2,
+        height: height*0.15,
+        fit: BoxFit.contain,),
 
 
+      content:  Directionality(textDirection: TextDirection.rtl,
+          child: SizedBox(
+           // width: width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: height*0.02,),
+
+                const Text('هل انت متأكد من إتمام التعاقد ونقل العميل الى العملاء المتعاقدين!',
+
+                  style:  TextStyle(
+                      fontFamily: 'Cairo',
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: kBlackText),
+                ),
+                SizedBox(height: height*0.02,),
+                SizedBox(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SmallButtonSizer(onPressed: (){
+                        return ;
+                      }, title: 'تاكيد',color: kTextColor,),
+                      SmallButtonSizer(onPressed: (){
+                        Navigator.pop(context);
+
+                      }, title: 'إلغاء',color: kButtonRedDark),
+
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          )),
+
+    ),
+  );
+}
+
+Future <void> showLoserDialog (BuildContext context){
+  double height = MediaQuery.of(context).size.height;
+  double width = MediaQuery.of(context).size.width;
+  return    showDialog<String> (
+    context: context,
+
+    builder: (BuildContext context) =>  CupertinoAlertDialog(
+      title: Image.asset(
+        'assets/image/icons8-trash-200 1.png',
+        width: width*2,
+        height: height*0.15,
+        fit: BoxFit.contain,),
+
+
+      content:  Directionality(textDirection: TextDirection.rtl,
+          child: SizedBox(
+            width: width,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(height: height*0.02,),
+
+                const Text(
+                  'هل انت متأكد من خسارة التعاقد ونقل العميل الي الارشيف؟',
+
+                  style:  TextStyle(
+                      fontFamily: 'Cairo',
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: kBlackText),
+                ),
+                SizedBox(height: height*0.02,),
+                SizedBox(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SmallButtonSizer(onPressed: (){
+                        return ;
+                      }, title: 'تاكيد',color: kTextColor,),
+                      SmallButtonSizer(onPressed: (){
+                        Navigator.pop(context);
+
+                      }, title: 'إلغاء',color: kButtonRedDark),
+
+                    ],
+                  ),
+                ),
+
+              ],
+            ),
+          )),
+
+    ),
+  );
+}
 
 //constant functions
-double sizeFromHeight(BuildContext context, double fraction,{bool removeAppBarSize = true}) {
+double sizeFromHeight(BuildContext context, double fraction,
+    {bool removeAppBarSize = true}) {
   double deviceHeight = MediaQuery.of(context).size.height;
-  fraction = (removeAppBarSize ? (deviceHeight - AppBar().preferredSize.height) : deviceHeight) / (fraction == 0 ? 1 : fraction);
+  fraction = (removeAppBarSize
+          ? (deviceHeight - AppBar().preferredSize.height)
+          : deviceHeight) /
+      (fraction == 0 ? 1 : fraction);
   return fraction;
 }
 
@@ -92,7 +201,6 @@ double sizeFromWidth(BuildContext context, double fraction) {
   fraction = MediaQuery.of(context).size.width / (fraction == 0 ? 1 : fraction);
   return fraction;
 }
-
 
 class SizeConfig {
   static double screenHeight = 0.0;
@@ -118,8 +226,4 @@ double getProportionateScreenWidth(double inputWidth) {
   // 375 is the layout width that designer use
   return (inputWidth / 375.0) * screenWidth;
 }
-
-
-//Text test
-String test = " فعلى سبيل المثال لا الحصر، تُستخدم المسائل والحسابات الرياضية   فعلى سبيل المثال لا الحصر، تُستخدم المسائل والحسابات الرياضية  فعلى سبيل المثال لا الحصر، تُستخدم المسائل والحسابات الرياضية فعلى سبيل المثال لا الحصر، تُستخدم المسائل والحسابات   فعلى سبيل المثال لا الحصر، تُستخدم المسائل والحسابات الرياضية   فعلى سبيل المثال لا الحصر، تُستخدم المسائل والحسابات الرياضية في فرضيات الاختبار، وفي المهن العلمية، وحتى في ماكينات المدفوعات النقدية الموجودة في المحلات والمتاجر الكبرى، ومن مجالات استخدام الرياضيات الأخرى معالجة برامج التصنيع، التي تُستخدم فيها الخصائص الهندسية.لذلك يعد علم الرياضيات علمًا شاملًا يدخل في معظم العلوم الحديثة الأخرى، ومن أبرز فروع علم الرياضيات ما يأتي لذلك يعد علم الرياضيات علمًا شاملًا يدخل في معظم العلوم الحديثة الأخرى، ومن أبرز فروع علم الرياضيات ما يأتي طُوّر علم الرياضيات في العصر الحديث، وأصبح له العديد من الفروع المتنوعة، وكل فرع منها يختص بدراسة مجال رياضي معين، وقد ساهمت فروع الرياضيات في التطور التكنولوجي بدرجة كبيرة، لذلك يعد علم الرياضيات علمًا شاملًا يدخل في معظم العلوم الحديثة الأخرى، ومن أبرز فروع علم الرياضيات ما يأتيا لمثال لا الحصر، تُستخدم المسائل والحسابات ال ا يأتيا لمثال لا الحصر، تُستخدم المسائل والحسابات ";
 

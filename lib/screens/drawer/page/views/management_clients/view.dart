@@ -28,6 +28,8 @@ class _MainScreenState extends State<ManagementClientsScreen> {
       drawer: drawer(context: context),
       key: _scaffoldKey,
       appBar: customAppbar(
+        isIcons: true,
+          icons: Icons.arrow_forward_ios,
           title: "إدارة العملاء",
           press: () => _scaffoldKey.currentState!.openDrawer(),
           context: context),

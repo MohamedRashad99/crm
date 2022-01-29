@@ -1,7 +1,14 @@
 import 'dart:io';
 
+import 'package:crm/screens/client_data/view.dart';
+import 'package:crm/screens/components/CustomButtonSizer.dart';
 import 'package:crm/screens/components/constants.dart';
+import 'package:crm/screens/drawer/page/views/management_clients/view.dart';
+import 'package:crm/screens/home/pages/views/tasks/view.dart';
+import 'package:crm/screens/new_follow_up/view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 class ClientListsScreen extends StatelessWidget {
   const ClientListsScreen({Key? key}) : super(key: key);
@@ -15,21 +22,61 @@ class ClientListsScreen extends StatelessWidget {
       child: Container(
         color: kBackgroundButton,
         child: ListView.builder(
-
-          physics:  BouncingScrollPhysics(),
+          physics:  const BouncingScrollPhysics(),
             itemCount: 15,
             itemBuilder: (context ,index){
          return  InkWell(
-           onTap: (){},
-           /// TODO::
+           onTap: (){
+              showDialog<String>(
+               context: context,
+
+               builder: (BuildContext context) =>  CupertinoAlertDialog(
+
+                 content:  Directionality(textDirection: TextDirection.rtl,
+                     child: Column(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                         CustomButtonSizer(onPressed: (){
+                           Navigator.pop(context);
+                           Get.to(()=>const NewFollowUp());
+                         }, title: 'متابعة جديدة',color: kButtonGreen,),
+                         CustomButtonSizer(onPressed: (){
+                           Navigator.pop(context);
+                           Get.to(()=> ClientData());
+
+                         }, title: 'بيانات العميل',color: kPrimaryColor,),
+                         CustomButtonSizer(onPressed: (){
+                           Navigator.pop(context);
+                           Get.to(()=> const ManagementClientsScreen());
+                         }, title: 'سجل المتابعة',color: kSecondaryColor,),
+                         CustomButtonSizer(onPressed: (){
+                           Navigator.pop(context);
+                           Get.to(()=> const TasksScreen());
+                         }, title: 'المهام',color: kAccentColor,),
+                         CustomButtonSizer(onPressed: ()async{
+                           Navigator.pop(context);
+                           await showConfirmationDialog(context);
+                         }, title: 'إتمام التعاقد',color: kButtonGreenDark,),
+                         CustomButtonSizer(onPressed: ()async{
+                           Navigator.pop(context);
+                           await showLoserDialog(context);
+                         }, title: 'خسارة العقد',color: Colors.red,),
+
+                       ],
+                      )),
+
+               ),
+             );
+
+           },
+
            child: Container(
-             margin:  EdgeInsets.symmetric(vertical: 3),
+             margin:  const EdgeInsets.symmetric(vertical: 3),
              color: Colors.white,
-             //assets/image/Group 6865.png
                child: Row(
                  children: [
                    Padding(
-                     padding:  EdgeInsets.only(left: 10),
+                     padding:  const EdgeInsets.only(left: 10),
                      child: CircleAvatar(maxRadius: 15,child: Image.asset('assets/image/Group 6865.png'),),
                    ),
                    SizedBox(

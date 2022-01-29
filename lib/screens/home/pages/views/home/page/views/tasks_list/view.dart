@@ -1,8 +1,8 @@
 import 'package:crm/screens/add_new_task/page/views/search/search.dart';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/notes_textformfield.dart';
-import 'package:crm/screens/home/pages/views/home/page/views/completes_tasks/page/views/task_completed_datails/view.dart';
 import 'package:crm/screens/home/pages/views/home/page/views/tasks_list/views/card.dart';
+import 'package:crm/screens/task_completed_datails/view.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

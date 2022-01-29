@@ -1,8 +1,8 @@
 import 'package:crm/screens/components/constants.dart';
+import 'package:crm/screens/task_completed_datails/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'page/views/task_completed_datails/view.dart';
 class CompletedTasks extends StatelessWidget {
   const CompletedTasks({Key? key}) : super(key: key);
 
