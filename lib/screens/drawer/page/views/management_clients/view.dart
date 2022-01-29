@@ -1,10 +1,16 @@
 import 'dart:io';
 
 import 'package:crm/screens/add_new_task/page/views/search/search.dart';
+import 'package:crm/screens/client_data/view.dart';
+import 'package:crm/screens/components/CustomButtonSizer.dart';
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/home/pages/views/home/page/views/client_list_screen/view.dart';
 import 'package:crm/screens/home/pages/views/speed_dial.dart';
+import 'package:crm/screens/home/pages/views/tasks/view.dart';
+import 'package:crm/screens/new_follow_up/view.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../view.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +50,7 @@ class _MainScreenState extends State<ManagementClientsScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SizedBox(width: width*0.7,child: SearchOnClient(hintText: 'بحث')),
+                  SizedBox(width: width*0.7,child: const SearchOnClient(hintText: 'بحث')),
 
                   Image.asset('assets/image/Filter.png',),
                 ],
@@ -61,8 +67,50 @@ class _MainScreenState extends State<ManagementClientsScreen> {
                     itemCount: 15,
                     itemBuilder: (context ,index){
                       return  InkWell(
-                        onTap: (){},
-                        /// TODO::
+                        onTap: (){
+                          showDialog<String>(
+                            context: context,
+
+                            builder: (BuildContext context) =>  CupertinoAlertDialog(
+
+                              content:  Directionality(textDirection: TextDirection.rtl,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CustomButtonSizer(onPressed: (){
+                                        Navigator.pop(context);
+                                        Get.to(()=>const NewFollowUp());
+                                      }, title: 'متابعة جديدة',color: kButtonGreen,),
+                                      CustomButtonSizer(onPressed: (){
+                                        Navigator.pop(context);
+                                        Get.to(()=> ClientData());
+
+                                      }, title: 'بيانات العميل',color: kPrimaryColor,),
+                                      CustomButtonSizer(onPressed: (){
+                                        Navigator.pop(context);
+                                        Get.to(()=> const ManagementClientsScreen());
+                                      }, title: 'سجل المتابعة',color: kSecondaryColor,),
+                                      CustomButtonSizer(onPressed: (){
+                                        Navigator.pop(context);
+                                        Get.to(()=> const TasksScreen());
+                                      }, title: 'المهام',color: kAccentColor,),
+                                      CustomButtonSizer(onPressed: ()async{
+                                        Navigator.pop(context);
+                                        await showConfirmationDialog(context);
+                                      }, title: 'إتمام التعاقد',color: kButtonGreenDark,),
+                                      CustomButtonSizer(onPressed: ()async{
+                                        Navigator.pop(context);
+                                        await showLoserDialog(context);
+                                      }, title: 'خسارة العقد',color: Colors.red,),
+
+                                    ],
+                                  )),
+
+                            ),
+                          );
+
+                        },
+
                         child: Container(
                           margin:  const EdgeInsets.symmetric(vertical: 3),
                           color: Colors.white,

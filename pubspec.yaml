@@ -33,7 +33,6 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   nations: ^0.0.4
-
   carousel_slider: ^4.0.0
   dio: ^4.0.0
   device_preview: ^1.0.0
