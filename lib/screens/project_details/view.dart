@@ -20,7 +20,6 @@ class ProjectDetails extends StatelessWidget {
       appBar: customAppbar(
           isIcons: true,
           icons: Icons.arrow_forward_ios,
-
           /// TODO: Don`t miss match your head of title => Id
           title: "مشروع العلا مصر",
           press: () => _scaffoldKey.currentState!.openDrawer(),
@@ -90,7 +89,7 @@ class ProjectDetails extends StatelessWidget {
               buildSizedBox(height: height * 0.04),
               Container(
                 color: Colors.white,
-              padding:EdgeInsets.symmetric(horizontal: 18),
+              padding:const EdgeInsets.symmetric(horizontal: 18),
                 child: const Text(
                   KeysConfig.kLoramText,
                   style: TextStyle(
