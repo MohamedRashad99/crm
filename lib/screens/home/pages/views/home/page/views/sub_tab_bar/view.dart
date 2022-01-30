@@ -1,8 +1,9 @@
 import 'package:crm/screens/components/constants.dart';
-import 'tasks_list/view.dart';
+import 'package:crm/screens/home/pages/views/home/page/views/sub_tab_bar/views/tasks_list/view.dart';
 import 'package:flutter/material.dart';
 
-import 'completes_tasks/view.dart';
+import 'views/completes_tasks/view.dart';
+
 
 class SubTabBar extends StatefulWidget {
   const SubTabBar({Key? key}) : super(key: key);

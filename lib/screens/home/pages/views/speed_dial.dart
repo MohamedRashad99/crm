@@ -112,16 +112,7 @@ class _FloatingActionViewState extends State<FloatingActionView> {
     );
   }
 
-  Text titleOfTextField({String? title}) {
-    return Text(
-      title!,
-      style: const TextStyle(
-          fontFamily: 'Cairo',
-          fontSize: 14,
-          fontWeight: FontWeight.bold,
-          color: kTextColor),
-    );
-  }
+
 
   var renderOverlay = true;
 
@@ -165,85 +156,83 @@ class _FloatingActionViewState extends State<FloatingActionView> {
       ),
       context: context,
       builder: (_) {
-        // Timer(Duration(seconds: 20), () {
-        //   Navigator.of(context).pop();
-        //   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-        // });
-        return Container(
-          height: height * 0.9,
-          width: width,
-          margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
-          child: StreamBuilder<Object>(
-              stream: null,
-              builder: (context, snapshot) {
-                return Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: height*0.02,),
-                        const Text(
-                          'إضافة عميل جديد',
-                          style: TextStyle(
-                              fontFamily: 'Cairo',
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                        titleOfTextField(title: '* الإسم'),
-                        NewClientTextField(
-                          onTap: () {},
-                          hint: 'أضف أسم العميل ',
-                        ),
-                        titleOfTextField(title: '* رقم الهاتف'),
-                        NewClientTextField(
-                          onTap: () {},
-                          hint: 'أضف رقم الهاتف ',
-                        ),
-                        titleOfTextField(title: '* رقم هاتف اّخر'),
-                        NewClientTextField(
-                          onTap: () {},
-                          hint: 'أختياري',
-                        ),
-                        titleOfTextField(title: '* العنوان'),
-                        NewClientTextField(
-                          onTap: () {},
-                          hint: 'أضف العنوان ',
-                        ),
-                        titleOfTextField(title: '* البريد الإلكتروني'),
-                        NewClientTextField(
-                          onTap: () {},
-                          hint: 'أضف البريد الإلكتروني',
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              children: [
-                                titleOfTextField(title: '* فئة العميل'),
-                                DropDownList(width: width*0.4,),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                titleOfTextField(title: '* حالة العميل'),
-                                DropDownList(width: width*0.4,),
-                              ],
-                            )
-                          ],
-                        ),
-                        titleOfTextField(title: '* مصدر العميل'),
-                        DropDownList(width: width*0.9,),
-                        SizedBox(height: height*0.02,),
-                        NotesCustomTextField(onTap: (){},hint: 'ملاحظات',),
-                        InkWell(onTap: ()=>Navigator.of(context).pop(),child: Align(alignment: AlignmentDirectional.bottomEnd,child: Image.asset('assets/image/submit.png',height: 40,width: 40,))),
-                      ],
+        return SingleChildScrollView(
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: Container(
+            height: height * 0.9,
+            width: width,
+            margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+            child: StreamBuilder<Object>(
+                stream: null,
+                builder: (context, snapshot) {
+                  return Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: ListView(
+                        children: [
+                          SizedBox(height: height*0.02,),
+                          const Text(
+                            'إضافة عميل جديد',
+                            style: TextStyle(
+                                fontFamily: 'Cairo',
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          titleOfTextField(title: '* الإسم'),
+                          NewClientTextField(
+                            onTap: () {},
+                            hint: 'أضف أسم العميل ',
+                          ),
+                          titleOfTextField(title: '* رقم الهاتف'),
+                          NewClientTextField(
+                            onTap: () {},
+                            hint: 'أضف رقم الهاتف ',
+                          ),
+                          titleOfTextField(title: '* رقم هاتف اّخر'),
+                          NewClientTextField(
+                            onTap: () {},
+                            hint: 'أختياري',
+                          ),
+                          titleOfTextField(title: '* العنوان'),
+                          NewClientTextField(
+                            onTap: () {},
+                            hint: 'أضف العنوان ',
+                          ),
+                          titleOfTextField(title: '* البريد الإلكتروني'),
+                          NewClientTextField(
+                            onTap: () {},
+                            hint: 'أضف البريد الإلكتروني',
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                children: [
+                                  titleOfTextField(title: '* فئة العميل'),
+                                  DropDownList(width: width*0.4,),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  titleOfTextField(title: '* حالة العميل'),
+                                  DropDownList(width: width*0.4,),
+                                ],
+                              )
+                            ],
+                          ),
+                          titleOfTextField(title: '* مصدر العميل'),
+                          DropDownList(width: width*0.9,),
+                          SizedBox(height: height*0.02,),
+                          NotesCustomTextField(onTap: (){},hint: 'ملاحظات',),
+                          InkWell(onTap: ()=>Navigator.of(context).pop(),child: Align(alignment: AlignmentDirectional.bottomEnd,child: Image.asset('assets/image/submit.png',height: 40,width: 40,))),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }),
+                  );
+                }),
+          ),
         );
       },
     );
@@ -258,26 +247,22 @@ class _FloatingActionViewState extends State<FloatingActionView> {
       ),
       context: context,
       builder: (_) {
-        // Timer(Duration(seconds: 20), () {
-        //   Navigator.of(context).pop();
-        //   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-        // });
-        return Container(
-          height: height * 0.4,
-          width: width,
-          margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
-          child: StreamBuilder<Object>(
-              stream: null,
-              builder: (context, snapshot) {
-                return Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+        return Padding(
+          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: Container(
+            height: height * 0.4,
+            width: width,
+            margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+            child: StreamBuilder<Object>(
+                stream: null,
+                builder: (context, snapshot) {
+                  return Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: ListView(
+
                       children: [
                         SizedBox(height: height*0.02,),
-                        Center(
+                        const Center(
                           child: Text(
                             'إضافة مهمة جديدة',
                             style: TextStyle(
@@ -405,13 +390,22 @@ class _FloatingActionViewState extends State<FloatingActionView> {
                         InkWell(onTap: ()=>Navigator.of(context).pop(),child: Align(alignment: AlignmentDirectional.bottomEnd,child: Image.asset('assets/image/submit.png',height: 40,width: 40,))),
                       ],
                     ),
-                  ),
-                );
-              }),
+                  );
+                }),
+          ),
         );
       },
     );
   }
 
-
+  Text titleOfTextField({String? title}) {
+    return Text(
+      title!,
+      style: const TextStyle(
+          fontFamily: 'Cairo',
+          fontSize: 14,
+          fontWeight: FontWeight.bold,
+          color: kTextColor),
+    );
+  }
 }

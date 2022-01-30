@@ -1,14 +1,11 @@
-import 'package:crm/screens/add_new_task/page/views/search/search.dart';
 import 'package:crm/screens/components/constants.dart';
-import 'package:crm/screens/components/notes_textformfield.dart';
 import 'package:crm/screens/components/smallButtonSizer.dart';
-import 'package:crm/screens/home/pages/views/home/page/views/tasks_list/views/card.dart';
 import 'package:crm/screens/task_completed_datails/view.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'views/card.dart';
 class TasksList extends StatefulWidget {
   const TasksList({Key? key}) : super(key: key);
 
@@ -44,8 +41,7 @@ class _TasksListState extends State<TasksList> {
                         children: [
                           buildHeadExpandableTitle(headTitle: 'اليوم'),
                           buildSizedBox(width),
-                          buildTextNumber(textNumber:  '(3)'),
-
+                          buildTextNumber(textNumber: '(3)'),
                         ],
                       ),
                     ),
@@ -58,14 +54,29 @@ class _TasksListState extends State<TasksList> {
                     expanded: SizedBox(
                       child: ListOfCard(
                           onTap: () => Get.to(() => TasksCompletedDetails()),
-                          circleOnTap: () async{
+                          circleOnTap: () async {
                             await showConfirmationDialog(
-                                context,
-                              done: SmallButtonSizer(onPressed: (){}, title: 'تاكيد',color: kTextColor,loadingColor: kPrimaryColor,),
-                              cancelled:  SmallButtonSizer(onPressed: ()=>{ Navigator.pop(context)}, title: 'إلغاء',color: kButtonRedDark),
-
-                              image:  'assets/image/99 1.png'
-                                ,title:'إتمام المهمة',
+                              context,
+                              done: SmallButtonSizer(
+                                onPressed: () async {
+                                  // Navigator.pop(context);
+                                  await showConfirmationDialog(context,
+                                      title: 'تمت المهة بنجاح',
+                                      image: 'assets/image/99 1.png',
+                                      cancelled: const SizedBox(),
+                                      done: const SizedBox());
+                                  Navigator.pop(context);
+                                },
+                                title: 'تاكيد',
+                                color: kTextColor,
+                                loadingColor: kPrimaryColor,
+                              ),
+                              cancelled: SmallButtonSizer(
+                                  onPressed: () => Navigator.pop(context),
+                                  title: 'إلغاء',
+                                  color: kButtonRedDark),
+                              image: 'assets/image/99 1.png',
+                              title: 'إتمام المهمة',
                             );
                           },
                           headTitle: 'إجتماع مناقشة العرض المقدم من العميل',
@@ -101,7 +112,7 @@ class _TasksListState extends State<TasksList> {
                         children: [
                           buildHeadExpandableTitle(headTitle: 'مهام متاخرة'),
                           buildSizedBox(width),
-                          buildTextNumber(textNumber:  '(5)'),
+                          buildTextNumber(textNumber: '(5)'),
                         ],
                       ),
                     ),
@@ -114,26 +125,29 @@ class _TasksListState extends State<TasksList> {
                     expanded: SizedBox(
                       child: ListOfCard(
                           onTap: () => Get.to(() => TasksCompletedDetails()),
-                          circleOnTap: () async{
+                          circleOnTap: () async {
                             await showConfirmationDialog(
                               context,
-                              done:  SmallButtonSizer(
-                                onPressed: ()async {
+                              done: SmallButtonSizer(
+                                onPressed: () async {
                                   // Navigator.pop(context);
-                                  await showConfirmationDialog(
-                                      context, title: 'تمت المهة بنجاح',
+                                  await showConfirmationDialog(context,
+                                      title: 'تمت المهة بنجاح',
                                       image: 'assets/image/99 1.png',
-                                      cancelled: SizedBox(),
-                                      done:  SizedBox()
-
-                                  );
+                                      cancelled: const SizedBox(),
+                                      done: const SizedBox());
                                   Navigator.pop(context);
                                 },
                                 title: 'تاكيد',
-                                color: kTextColor,loadingColor: kPrimaryColor,),
-                              cancelled:  SmallButtonSizer(onPressed: ()=> Navigator.pop(context), title: 'إلغاء',color: kButtonRedDark),
-                              image:  'assets/image/99 1.png'
-                              ,title:'إتمام المهمة',
+                                color: kTextColor,
+                                loadingColor: kPrimaryColor,
+                              ),
+                              cancelled: SmallButtonSizer(
+                                  onPressed: () => Navigator.pop(context),
+                                  title: 'إلغاء',
+                                  color: kButtonRedDark),
+                              image: 'assets/image/99 1.png',
+                              title: 'إتمام المهمة',
                             );
                           },
                           headTitle: 'إجتماع مناقشة العرض المقدم من العميل',
@@ -153,10 +167,10 @@ class _TasksListState extends State<TasksList> {
   }
 
   Text buildTextNumber({required String textNumber}) {
-    return  Text(
-                        textNumber ,
-                          style: TextStyle(color: kTextColor),
-                        );
+    return Text(
+      textNumber,
+      style: const TextStyle(color: kTextColor),
+    );
   }
 
   SizedBox buildSizedBox(double width) {

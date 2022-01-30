@@ -1,6 +1,6 @@
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
-import 'package:crm/screens/home/pages/views/home/page/views/sub_tab_bar_content.dart';
+import '../home/page/views/sub_tab_bar/view.dart';
 import '../../../../drawer/view.dart';
 import 'package:flutter/material.dart';
 

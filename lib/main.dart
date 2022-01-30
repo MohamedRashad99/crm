@@ -34,7 +34,7 @@ class CRM extends StatelessWidget{
       popGesture: true,
         defaultTransition: g.Transition.zoom,
         debugShowCheckedModeBanner: false,
-        home:ServicesDetailsScreen()
+        home:SplashScreen()
         //HomeTabScreen(),
       );
 

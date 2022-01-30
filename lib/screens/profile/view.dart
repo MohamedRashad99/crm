@@ -2,14 +2,15 @@ import 'dart:developer';
 
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
-import 'package:crm/screens/components/new_client_textfield.dart';
 import 'package:crm/screens/components/profileTextFiledWithoutBoder.dart';
 import 'package:crm/screens/components/smallButton.dart';
 import 'package:crm/screens/drawer/view.dart';
 import 'package:flutter/material.dart';
 
+import 'page/views/list_title_card.dart';
+
 class ProfileScreen extends StatefulWidget {
-  ProfileScreen({Key? key}) : super(key: key);
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -17,18 +18,13 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
   late String textField;
-
   late String confirmPassword;
-  String name = '' ;
+  String name = '';
+
   String phoneNumber = '';
   String email = '';
-
   String password = '';
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +54,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       subTitle: name,
                       typeOfTextField: TextInputType.name);
                 },
-                child: buildContainer(
+                child: ListTitleCard(
                   isFound: true,
                   height: height * 0.9,
                   icon: Icons.account_circle_rounded,
                   title: 'الأسم',
-                  subTitle:name,
+                  subTitle: name,
                   dIcon: Icons.arrow_forward_ios,
                 ),
               ),
@@ -75,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       subTitle: phoneNumber,
                       typeOfTextField: TextInputType.phone);
                 },
-                child: buildContainer(
+                child: ListTitleCard(
                   isFound: true,
                   height: height * 0.9,
                   icon: Icons.phone,
@@ -92,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       subTitle: email,
                       typeOfTextField: TextInputType.emailAddress);
                 },
-                child: buildContainer(
+                child: ListTitleCard(
                   isFound: true,
                   height: height * 0.9,
                   icon: Icons.mail,
@@ -105,15 +101,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               InkWell(
                 onTap: () {
                   bottomSheetUserProfile(
-                    secandTextFile: true,
+                      secandTextFile: true,
                       context: context,
                       title: 'كلمة المرور',
                       subTitle: password,
                       subTitle2: password,
                       typeOfTextField: TextInputType.name);
-
                 },
-                child: buildContainer(
+                child: ListTitleCard(
                   isFound: true,
                   height: height * 0.9,
                   icon: Icons.lock,
@@ -129,20 +124,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-
-
   void bottomSheetUserProfile({
     @required context,
     required String title,
     required String subTitle,
-     String? subTitle2,
+    String? subTitle2,
     required TextInputType typeOfTextField,
-     bool secandTextFile =false,
-    bool isVisableIcon =false,
-
+    bool secandTextFile = false,
+    bool isVisableIcon = false,
   }) {
-    final  _controller = TextEditingController();
-    final  _controller2 = TextEditingController();
+    final _controller = TextEditingController();
+    final _controller2 = TextEditingController();
 
     showModalBottomSheet(
         backgroundColor: Colors.white,
@@ -155,152 +147,103 @@ class _ProfileScreenState extends State<ProfileScreen> {
         builder: (context) {
           return Directionality(
             textDirection: TextDirection.rtl,
-            child: ListView(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-              primary: true,
-              shrinkWrap: true,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox.shrink(),
-                        Text(
-                          title,
-                          style: TextStyle(
-                              color: HexColor('#3E5481'),
-                              fontFamily: 'Cairo',
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
-                        ),
-
-                        InkWell(
-                          onTap: () => Navigator.pop(context),
-                          child: Icon(
-                            Icons.clear,
-                            size: 25,
-                            color: Colors.black,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: ListView(
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                primary: true,
+                shrinkWrap: true,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const SizedBox.shrink(),
+                          Text(
+                            title,
+                            style: TextStyle(
+                                color: HexColor('#3E5481'),
+                                fontFamily: 'Cairo',
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-
-                    ProfileWithoutBorderTextField(
-                      controller: _controller,
-                      dIcon: Icons.edit,
-                      icon: secandTextFile ? Icons.lock_outline :null ,
-                      hint: subTitle,onTap: (){},),
-                    secandTextFile ?  Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
-                      child: ProfileWithoutBorderTextField(
-                        controller: _controller2,
+                          InkWell(
+                            onTap: () => Navigator.pop(context),
+                            child: const Icon(
+                              Icons.clear,
+                              size: 25,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      ProfileWithoutBorderTextField(
+                        controller: _controller,
                         dIcon: Icons.edit,
-                        icon: Icons.lock_outline,
-                      //  dIcon: Icons.lock_outline,
+                        icon: secandTextFile ? Icons.lock_outline : null,
                         hint: subTitle,
-                        onTap: (){},),
-                    ):SizedBox(),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Center(
-                        child: SmallButton(
-                            onPressed: () {
-                              setState(() {
-                               switch (title){
-                                 case 'الأسم':
-                                   name = _controller.text;
-                                   Navigator.pop(context);
-                                   break;
-                                 case 'رقم الهاتف':
-                                   phoneNumber = _controller.text;
-                                   Navigator.pop(context);
-                                   break;
-                                 case 'البريد الالكتروني':
-                                   email = _controller.text;
-                                   Navigator.pop(context);
-                                   break;
-                                 case 'كلمة المرور':
-                                   if(_controller2.text == _controller.text){
-                                     password = _controller.text;
-                                     Navigator.pop(context);
-                                   }else{
-                                     log('Not validted');
-                                   }
-                                   break;
-                               }
-                              });
-
-                            },
-                            color: kPrimaryColor,
-                            title: 'تاكيد'))
-                  ],
-                ),
-              ],
+                        onTap: () {},
+                      ),
+                      secandTextFile
+                          ? Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: ProfileWithoutBorderTextField(
+                                controller: _controller2,
+                                dIcon: Icons.edit,
+                                icon: Icons.lock_outline,
+                                //  dIcon: Icons.lock_outline,
+                                hint: subTitle,
+                                onTap: () {},
+                              ),
+                            )
+                          : const SizedBox(),
+                      const SizedBox(
+                        height: 50,
+                      ),
+                      Center(
+                          child: SmallButton(
+                              onPressed: () {
+                                setState(() {
+                                  switch (title) {
+                                    case 'الأسم':
+                                      name = _controller.text;
+                                      Navigator.pop(context);
+                                      break;
+                                    case 'رقم الهاتف':
+                                      phoneNumber = _controller.text;
+                                      Navigator.pop(context);
+                                      break;
+                                    case 'البريد الالكتروني':
+                                      email = _controller.text;
+                                      Navigator.pop(context);
+                                      break;
+                                    case 'كلمة المرور':
+                                      if (_controller2.text == _controller.text) {
+                                        password = _controller.text;
+                                        Navigator.pop(context);
+                                      } else {
+                                        log('Not validted');
+                                      }
+                                      break;
+                                  }
+                                });
+                              },
+                              color: kPrimaryColor,
+                              title: 'تاكيد'))
+                    ],
+                  ),
+                ],
+              ),
             ),
           );
         });
-  }
-
-  Widget buildContainer({
-    double? height,
-    required bool isFound,
-    required IconData icon,
-    required String title,
-    required String subTitle,
-    required IconData dIcon,
-  }) {
-    return  ListTile(
-
-    contentPadding: EdgeInsets.zero,
-      leading:  Icon(
-        icon,
-        color: kPrimaryColor,
-      ),
-      title:  Text(
-        // 'الأسم',
-        title,
-        style: const TextStyle(
-            fontFamily: 'Cairo',
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Colors.black),
-      ),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          isFound
-              ? Text(
-            //  'Mohammed Rashad',
-            subTitle,
-            maxLines: 2,
-            style: const TextStyle(
-                fontFamily: 'Cairo',
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-                color: kTextColor),
-          )
-              : SizedBox(),
-          SizedBox(width: 10,),
-
-          Icon(
-            //Icons.arrow_forward_ios,
-            dIcon,
-            size: 15,
-          ),
-        ],
-      ),
-
-    );
-
   }
 
   Text title({String? title}) {

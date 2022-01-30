@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:crm/local_storage/local_storage.dart';
+import 'package:crm/screens/home/view.dart';
 import 'package:crm/screens/onboarding/view.dart';
-import 'package:crm/screens/sign_in/view.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,12 +11,12 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 2), () {
       bool isBoarding = LocalStorage.getBool('onBoarding');
       if (isBoarding) {
-        Get.offAll(() => SignInScreen());
+        Get.offAll(() => const HomeTabScreen());
       } else {
-        Timer(const Duration(seconds: 3),
+        Timer(const Duration(seconds: 2),
             () => Get.offAll(() => const OnBoardingScreen()));
       }
     });

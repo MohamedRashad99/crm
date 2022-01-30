@@ -1,8 +1,12 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:html/parser.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void showSnackBar({
   @required String? text,

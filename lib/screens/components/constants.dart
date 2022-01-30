@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:crm/screens/components/smallButtonSizer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -124,62 +126,50 @@ Future <void> showConfirmationDialog (BuildContext context ,
   );
 }
 
-Future <void> showLoserDialog (BuildContext context){
-  double height = MediaQuery.of(context).size.height;
-  double width = MediaQuery.of(context).size.width;
-  return    showDialog<String> (
+Future<bool> onWillPop(BuildContext context) async {
+  final shouldPop = await showDialog(
     context: context,
+    builder: (context) => CupertinoAlertDialog(
+      title: const Text('تسجيل خروج؟', style:  TextStyle(
+          fontFamily: 'Cairo',
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: kBlackText),),
+      content: const Text('هل أنت متأكد أنك تريد تسجيل الخروج؟'
+        ,style:  TextStyle(
+            fontFamily: 'Cairo',
+            fontSize: 12,
+            // fontWeight: FontWeight.bold,
+            color: kBlackText),),
+      actions: <Widget>[
+        CupertinoDialogAction(
+            isDefaultAction: true,
+            onPressed: (){
+              Navigator.pop(context);
+            },
+            child: const Text("إلغاء", style:  TextStyle(
+              fontFamily: 'Cairo',
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),)
+        ),
+        CupertinoDialogAction(
+            textStyle: const TextStyle(color: Colors.red),
+            isDefaultAction: true,
+            onPressed: () => exit(0),
+            child: const Text("تسجيل خروج", style:  TextStyle(
+              fontFamily: 'Cairo',
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),)
+        ),
 
-    builder: (BuildContext context) =>  CupertinoAlertDialog(
-      title: Image.asset(
-        'assets/image/icons8-trash-200 1.png',
-        width: width*2,
-        height: height*0.15,
-        fit: BoxFit.contain,),
-
-
-      content:  Directionality(textDirection: TextDirection.rtl,
-          child: SizedBox(
-            width: width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: height*0.02,),
-
-                const Text(
-                  'هل انت متأكد من خسارة التعاقد ونقل العميل الي الارشيف؟',
-
-                  style:  TextStyle(
-                      fontFamily: 'Cairo',
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: kBlackText),
-                ),
-                SizedBox(height: height*0.02,),
-                SizedBox(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SmallButtonSizer(onPressed: (){
-                        return ;
-                      }, title: 'تاكيد',color: kTextColor,),
-                      SmallButtonSizer(onPressed: (){
-                        Navigator.pop(context);
-
-                      }, title: 'إلغاء',color: kButtonRedDark),
-
-                    ],
-                  ),
-                ),
-
-              ],
-            ),
-          )),
-
+      ],
     ),
   );
-}
 
+  return shouldPop ?? false;
+}
 //constant functions
 double sizeFromHeight(BuildContext context, double fraction,
     {bool removeAppBarSize = true}) {

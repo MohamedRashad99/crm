@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:crm/screens/components/constants.dart';
+import 'package:crm/screens/components/fast_widget.dart';
 import 'package:crm/screens/home/pages/views/buttons_naviagtion_bar.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'pages/views/calendars/view.dart';
@@ -34,35 +38,44 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
   final ItemsBar _itemsBar = ItemsBar();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _widgetOptions.elementAt(_selectedIndex),
-      floatingActionButton: FloatingActionView(),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      bottomNavigationBar: Directionality(
-        textDirection: TextDirection.rtl,
-        child: BottomNavigationBar(
+    return WillPopScope(
+      onWillPop:()async{
+       return onWillPop(context);
+      },
+      child: Scaffold(
+        body: _widgetOptions.elementAt(_selectedIndex),
+        floatingActionButton: FloatingActionView(),
+        floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+        bottomNavigationBar: Directionality(
+          textDirection: TextDirection.rtl,
+          child: BottomNavigationBar(
 
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              _onItemTapped(index);
-            });
-          },
-          items: _itemsBar.itemsBar,
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: TextStyle(
-              fontFamily: 'Cairo',
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: HexColor('#2972B7')),
-          unselectedLabelStyle: TextStyle(
-              fontFamily: 'Cairo',
-              fontSize: 10,
-              fontWeight: FontWeight.bold,
-              color: HexColor('#626262')),
-          iconSize: 25,
+            currentIndex: _selectedIndex,
+            onTap: (index) {
+              setState(() {
+                _onItemTapped(index);
+              });
+            },
+            items: _itemsBar.itemsBar,
+            type: BottomNavigationBarType.fixed,
+            selectedLabelStyle: TextStyle(
+                fontFamily: 'Cairo',
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: HexColor('#2972B7')),
+            unselectedLabelStyle: TextStyle(
+                fontFamily: 'Cairo',
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: HexColor('#626262')),
+            iconSize: 25,
+          ),
         ),
       ),
     );
   }
+
+
+
+
 }

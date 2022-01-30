@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../buttons_naviagtion_bar.dart';
 import '../speed_dial.dart';
 import 'page/views/client_list_screen/view.dart';
-import 'page/views/sub_tab_bar_content.dart';
+import 'page/views/sub_tab_bar/view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
