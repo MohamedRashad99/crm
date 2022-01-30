@@ -1,6 +1,7 @@
 import 'package:crm/screens/add_new_task/page/views/search/search.dart';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/notes_textformfield.dart';
+import 'package:crm/screens/components/smallButtonSizer.dart';
 import 'package:crm/screens/home/pages/views/home/page/views/tasks_list/views/card.dart';
 import 'package:crm/screens/task_completed_datails/view.dart';
 import 'package:expandable/expandable.dart';
@@ -57,7 +58,16 @@ class _TasksListState extends State<TasksList> {
                     expanded: SizedBox(
                       child: ListOfCard(
                           onTap: () => Get.to(() => TasksCompletedDetails()),
-                          circleOnTap: () {},
+                          circleOnTap: () async{
+                            await showConfirmationDialog(
+                                context,
+                              done: SmallButtonSizer(onPressed: (){}, title: 'تاكيد',color: kTextColor,loadingColor: kPrimaryColor,),
+                              cancelled:  SmallButtonSizer(onPressed: ()=>{ Navigator.pop(context)}, title: 'إلغاء',color: kButtonRedDark),
+
+                              image:  'assets/image/99 1.png'
+                                ,title:'إتمام المهمة',
+                            );
+                          },
                           headTitle: 'إجتماع مناقشة العرض المقدم من العميل',
                           clientName: 'أ / أحمد علي',
                           clientPhone: '01097758516 ',
@@ -104,7 +114,28 @@ class _TasksListState extends State<TasksList> {
                     expanded: SizedBox(
                       child: ListOfCard(
                           onTap: () => Get.to(() => TasksCompletedDetails()),
-                          circleOnTap: () {},
+                          circleOnTap: () async{
+                            await showConfirmationDialog(
+                              context,
+                              done:  SmallButtonSizer(
+                                onPressed: ()async {
+                                  // Navigator.pop(context);
+                                  await showConfirmationDialog(
+                                      context, title: 'تمت المهة بنجاح',
+                                      image: 'assets/image/99 1.png',
+                                      cancelled: SizedBox(),
+                                      done:  SizedBox()
+
+                                  );
+                                  Navigator.pop(context);
+                                },
+                                title: 'تاكيد',
+                                color: kTextColor,loadingColor: kPrimaryColor,),
+                              cancelled:  SmallButtonSizer(onPressed: ()=> Navigator.pop(context), title: 'إلغاء',color: kButtonRedDark),
+                              image:  'assets/image/99 1.png'
+                              ,title:'إتمام المهمة',
+                            );
+                          },
                           headTitle: 'إجتماع مناقشة العرض المقدم من العميل',
                           clientName: 'أ / أحمد علي',
                           clientPhone: '01097758516 ',

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:crm/screens/client_data/view.dart';
 import 'package:crm/screens/components/CustomButtonSizer.dart';
 import 'package:crm/screens/components/constants.dart';
+import 'package:crm/screens/components/smallButtonSizer.dart';
 import 'package:crm/screens/drawer/page/views/management_clients/view.dart';
 import 'package:crm/screens/home/pages/views/tasks/view.dart';
 import 'package:crm/screens/new_follow_up/view.dart';
@@ -29,7 +30,6 @@ class ClientListsScreen extends StatelessWidget {
            onTap: (){
               showDialog<String>(
                context: context,
-
                builder: (BuildContext context) =>  CupertinoAlertDialog(
 
                  content:  Directionality(textDirection: TextDirection.rtl,
@@ -50,20 +50,66 @@ class ClientListsScreen extends StatelessWidget {
                            Get.to(()=> const ManagementClientsScreen());
                          }, title: 'سجل المتابعة',color: kSecondaryColor,),
                          CustomButtonSizer(onPressed: (){
-                           Navigator.pop(context);
+                         //  Navigator.pop(context);
                            Get.to(()=> const TasksScreen());
                          }, title: 'المهام',color: kAccentColor,),
-                         CustomButtonSizer(onPressed: ()async{
-                           Navigator.pop(context);
-                           await showConfirmationDialog(context);
+                         CustomButtonSizer(
+                           onPressed: ()async{
+                           await showConfirmationDialog(
+                             context,
+                             done: SmallButtonSizer(
+                               onPressed: ()async {
+                                // Navigator.pop(context);
+                                 await showConfirmationDialog(
+                                   context, title: 'تمت المهة بنجاح',
+                                   image: 'assets/image/99 1.png',
+                                   cancelled: SizedBox(),
+                                   done:  SizedBox()
+
+                               );
+                                 Navigator.pop(context);
+                             },
+                               title: 'تاكيد',
+                               color: kTextColor,loadingColor: kPrimaryColor,),
+                              cancelled:  SmallButtonSizer(
+                                  onPressed: ()=> Navigator.pop(context),
+                                  title: 'إلغاء',color: kButtonRedDark),
+                               title: 'إتمام المهمة',
+                             image:  'assets/image/icons8-handshake-100 1.png'
+                           );
+                          Navigator.pop(context);
                          }, title: 'إتمام التعاقد',color: kButtonGreenDark,),
-                         CustomButtonSizer(onPressed: ()async{
+                         CustomButtonSizer(
+                           onPressed: ()async{
+                             await showConfirmationDialog(
+                                 context,
+                                 done: SmallButtonSizer(
+                                   onPressed: () async{
+                                    // Navigator.pop(context);
+                                     await showConfirmationDialog(
+                                         context, title: 'تمت الحذف بنجاح',
+                                         image: 'assets/image/icons8-delete-200 1.png',
+                                         cancelled: SizedBox(),
+                                         done:  SizedBox()
+
+                                     );
+                                     Navigator.pop(context);
+                                   },
+
+                                   title: 'تاكيد',
+                                   color: kTextColor,loadingColor: kPrimaryColor,),
+                                 cancelled:  SmallButtonSizer(
+                                     onPressed: ()=> Navigator.pop(context),
+                                     title: 'إلغاء',color: kButtonRedDark),
+                                 title: 'إتمام المهمة',
+                                 image:  'assets/image/icons8-handshake-100 1.png'
+                             );
                            Navigator.pop(context);
-                           await showLoserDialog(context);
-                         }, title: 'خسارة العقد',color: Colors.red,),
+                           },
+                       title: 'خسارة العقد',color: Colors.red,),
 
                        ],
-                      )),
+                      ),),
 
                ),
              );

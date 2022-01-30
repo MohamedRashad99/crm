@@ -9,7 +9,7 @@ import 'constants.dart';
 class SmallButtonSizer extends StatelessWidget {
   final VoidCallback? onPressed;
   final String? title;
-  final Color? color;
+  final Color color;
   // ignore: prefer_typing_uninitialized_variables
   final isLoading;
   // ignore: prefer_typing_uninitialized_variables
@@ -18,7 +18,7 @@ class SmallButtonSizer extends StatelessWidget {
   const SmallButtonSizer(
       {@required this.onPressed,
         @required this.title,
-        this.color,
+        this.color = kPrimaryColor,
         this.isLoading = false,
         this.loadingColor = false});
   @override
@@ -30,9 +30,10 @@ class SmallButtonSizer extends StatelessWidget {
         height: MediaQuery.of(context).size.height / 18,
         width: MediaQuery.of(context).size.width / 4,
         decoration: BoxDecoration(
-            color: color == null ? Colors.white : kPrimaryColor,
+            color: color ,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: kPrimaryColor, width: 1.5)),
+           // border: Border.all(color: kPrimaryColor, width: 1.5),
+        ),
         child: Center(
           child: isLoading != true
               ? Text(

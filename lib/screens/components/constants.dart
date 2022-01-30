@@ -75,20 +75,20 @@ spaceW(double width) {
   return SizedBox(width: width);
 }
 
-Future <void> showConfirmationDialog (BuildContext context){
+Future <void> showConfirmationDialog (BuildContext context ,
+    {required String image , required String title ,
+      required Widget done ,required Widget cancelled }){
   double height = MediaQuery.of(context).size.height;
   double width = MediaQuery.of(context).size.width;
   return    showDialog<String> (
     context: context,
-
-    builder: (BuildContext context) =>  CupertinoAlertDialog(
+    builder: (BuildContext context ) =>  CupertinoAlertDialog(
       title: Image.asset(
-        'assets/image/icons8-handshake-100 1.png',
+        image,
+       // 'assets/image/icons8-handshake-100 1.png',
         width: width*2,
         height: height*0.15,
         fit: BoxFit.contain,),
-
-
       content:  Directionality(textDirection: TextDirection.rtl,
           child: SizedBox(
            // width: width,
@@ -96,10 +96,10 @@ Future <void> showConfirmationDialog (BuildContext context){
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: height*0.02,),
-
-                const Text('هل انت متأكد من إتمام التعاقد ونقل العميل الى العملاء المتعاقدين!',
-
-                  style:  TextStyle(
+                 Text(
+                  //'هل انت متأكد من إتمام التعاقد ونقل العميل الى العملاء المتعاقدين!',
+                     title,
+                  style: const TextStyle(
                       fontFamily: 'Cairo',
                       fontSize: 12,
                       fontWeight: FontWeight.bold,
@@ -110,14 +110,8 @@ Future <void> showConfirmationDialog (BuildContext context){
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SmallButtonSizer(onPressed: (){
-                        return ;
-                      }, title: 'تاكيد',color: kTextColor,),
-                      SmallButtonSizer(onPressed: (){
-                        Navigator.pop(context);
-
-                      }, title: 'إلغاء',color: kButtonRedDark),
-
+                      done,
+                      cancelled,
                     ],
                   ),
                 ),
