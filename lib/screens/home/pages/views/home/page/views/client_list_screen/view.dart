@@ -139,11 +139,13 @@ class ClientListsScreen extends StatelessWidget {
                   color: Colors.white,
                   child: Row(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: CircleAvatar(
-                          maxRadius: 15,
-                          child: Image.asset('assets/image/Group 6865.png'),
+                      Container(
+                        padding: const EdgeInsets.only(left: 10,right: 8),
+
+                        decoration: const BoxDecoration(shape: BoxShape.circle),
+                        child: Image.asset(
+                          'assets/image/Group 6865.png',
+
                         ),
                       ),
                       SizedBox(
@@ -168,30 +170,26 @@ class ClientListsScreen extends StatelessWidget {
                               title: 'رقم الواتس أب',
                               subTitle: ' : 01097758516',
                             ),
-                            SizedBox(
-                              height: height * 0.01,
-                            ),
+                            customSizedBox(height: height),
                             Row(
                               children: [
                                 buildContainer(
-                                    background: kRoundColor,
+                                    background: kSkyLightColor,
                                     width: width * 0.25,
-                                    color: kTextColor,
+                                    color: kBlackText,
                                     title: 'صفحة فيس بوك'),
                                 SizedBox(
                                   width: width * 0.1,
                                 ),
                                 buildContainer(
-                                  background: kPrimaryColor,
+                                  background: kAccentColor,
                                   width: width * 0.25,
-                                  color: kTextColor,
+                                  color: kBlackText,
                                   title: 'عملاء المتابعات',
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: height * 0.01,
-                            ),
+                            customSizedBox(height: height),
                           ],
                         ),
                       ),
@@ -225,6 +223,12 @@ class ClientListsScreen extends StatelessWidget {
               color: color),
         ),
       ),
+    );
+  }
+
+  SizedBox customSizedBox ({required height}){
+    return  SizedBox(
+      height: height * 0.01,
     );
   }
 

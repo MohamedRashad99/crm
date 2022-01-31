@@ -9,6 +9,9 @@ const kSecondaryColor = Color(0xFF2972B7);
 const Color kAccentColor = Color(0xFFFFAE48);
 const Color kTextColor = Color(0xFF626262);
 const kBackgroundColor = Color(0xFFB1C5D8);
+const kSkyLightColor = Color(0xFFDDEFFF);
+
+
 const kBackgroundButton = Color(0xFFE6E6E6);
 const kSkyButton = Color(0xFFDDEFFF);
 const kRose = Color(0xFFFFC5B9);
@@ -77,6 +80,105 @@ spaceW(double width) {
   return SizedBox(width: width);
 }
 
+
+void archiveClients(BuildContext context,
+    double height,
+    double width,)  {
+  showModalBottomSheet(
+    backgroundColor:  kHomeColor,
+    isScrollControlled: true,
+
+  shape:  const RoundedRectangleBorder(
+    borderRadius:  BorderRadius.only(topLeft: Radius.circular(8),topRight: const Radius.circular(8),),
+  ),
+  context: context,
+
+  builder: (_) {
+      return Container(
+        height: height * 0.35,
+        width: width,
+
+        child: StreamBuilder<Object>(
+            stream: null,
+            builder: (context, snapshot) {
+              // ignore: prefer_const_constructors
+              return Directionality(
+                textDirection: TextDirection.rtl,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: height*0.01,),
+                    const  Align(
+                      alignment: Alignment.topLeft,
+                      child:  Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        child: Text(
+                          'أرشيف العملاء ',
+
+                          style: TextStyle(
+                              fontFamily: 'Cairo',
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: kPrimaryColor),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: height*0.01,),
+
+                    classificationContainer(
+                    height, width
+                    ,onTap: (){}
+                    ,classificationName: 'تصنيف بحالة العميل'),
+                    classificationContainer(
+                        height, width
+                        ,onTap: (){}
+                        ,classificationName: 'تصنيف بمصدر العميل'),
+                    classificationContainer(
+                        height, width
+                        ,onTap: (){}
+                        ,classificationName: 'تصنيف بفئة العميل'),
+                    classificationContainer(
+                        height, width
+                        ,onTap: (){}
+                        ,classificationName: 'تصنيف شهري'),
+                    classificationContainer(
+                        height, width
+                        ,onTap: (){}
+                        ,classificationName: 'تصنيف بالمشروع'),
+                  ],
+                ),
+
+
+              );
+            }),
+      );
+    },
+
+
+
+  );
+}
+
+InkWell classificationContainer(double height, double width,{required String classificationName , required VoidCallback onTap}) {
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8 ),
+
+      margin: const EdgeInsets.symmetric(vertical: 2 ),
+                      height: height*0.049,
+                      width: width,
+                      color: Colors.white,
+                      child:  Text(classificationName,
+                        style: const TextStyle(
+                          fontFamily: 'Cairo',
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                          color: kBlackText),),
+                    ),
+  );
+}
+
 Future <void> showConfirmationDialog (BuildContext context ,
     {required String image , required String title ,
       required Widget done ,required Widget cancelled }){
@@ -87,19 +189,16 @@ Future <void> showConfirmationDialog (BuildContext context ,
     builder: (BuildContext context ) =>  CupertinoAlertDialog(
       title: Image.asset(
         image,
-       // 'assets/image/icons8-handshake-100 1.png',
         width: width*2,
         height: height*0.15,
         fit: BoxFit.contain,),
       content:  Directionality(textDirection: TextDirection.rtl,
           child: SizedBox(
-           // width: width,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: height*0.02,),
                  Text(
-                  //'هل انت متأكد من إتمام التعاقد ونقل العميل الى العملاء المتعاقدين!',
                      title,
                   style: const TextStyle(
                       fontFamily: 'Cairo',
@@ -117,7 +216,6 @@ Future <void> showConfirmationDialog (BuildContext context ,
                     ],
                   ),
                 ),
-
               ],
             ),
           )),
@@ -130,18 +228,19 @@ Future<bool> onWillPop(BuildContext context) async {
   final shouldPop = await showDialog(
     context: context,
     builder: (context) => CupertinoAlertDialog(
-      title: const Text('تسجيل خروج؟', style:  TextStyle(
+      title: const Text(' إغلاق التطبيق؟', style:  TextStyle(
           fontFamily: 'Cairo',
           fontSize: 16,
           fontWeight: FontWeight.bold,
           color: kBlackText),),
-      content: const Text('هل أنت متأكد أنك تريد تسجيل الخروج؟'
+      content: const Text('هل أنت متأكد إنك  تريد إغلاق التطبيق ؟'
         ,style:  TextStyle(
             fontFamily: 'Cairo',
             fontSize: 12,
             // fontWeight: FontWeight.bold,
             color: kBlackText),),
       actions: <Widget>[
+
         CupertinoDialogAction(
             isDefaultAction: true,
             onPressed: (){

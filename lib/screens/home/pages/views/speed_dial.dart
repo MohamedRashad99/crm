@@ -86,7 +86,7 @@ class _FloatingActionViewState extends State<FloatingActionView> {
             foregroundColor: HexColor('#2972B7'),
             label: 'مهمة جديدة',
             onTap: () {
-              addNewTaskShowModalBottomSheet(context ,height,width);
+              _addNewTaskShowModalBottomSheet(context ,height,width);
             },
           ),
           SpeedDialChild(
@@ -148,7 +148,10 @@ class _FloatingActionViewState extends State<FloatingActionView> {
     FloatingActionButtonLocation.centerTop,
     FloatingActionButtonLocation.endTop,
   ];
-  void addNewClientShowModalBottomSheet(BuildContext context , double height ,double width , ) {
+  void addNewClientShowModalBottomSheet(
+      BuildContext context ,
+      double height ,
+      double width , ) {
     showModalBottomSheet(
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
@@ -238,30 +241,36 @@ class _FloatingActionViewState extends State<FloatingActionView> {
     );
   }
 
+  Future<void> _addNewTaskShowModalBottomSheet(
+      BuildContext context,
+      double height,
+      double width,
+      ) async {
+    Scaffold.of(context).showBottomSheet(
 
-  void addNewTaskShowModalBottomSheet(BuildContext context , double height ,double width , ) {
-    showModalBottomSheet(
-      isScrollControlled: true,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      context: context,
-      builder: (_) {
-        return Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: Container(
-            height: height * 0.4,
-            width: width,
-            margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
-            child: StreamBuilder<Object>(
-                stream: null,
-                builder: (context, snapshot) {
-                  return Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: ListView(
+          (_) {
+        // Timer(Duration(seconds: 20), () {
+        //   Navigator.of(context).pop();
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        // });
 
+        return Container(
+          height: height * 0.4,
+          width: width,
+          margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+          child: StreamBuilder<Object>(
+              stream: null,
+              builder: (context, snapshot) {
+                return Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: height*0.02,),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
                         const Center(
                           child: Text(
                             'إضافة مهمة جديدة',
@@ -272,131 +281,331 @@ class _FloatingActionViewState extends State<FloatingActionView> {
                                 color: Colors.black),
                           ),
                         ),
-                        SizedBox(height: height*0.02,),
-                        NotesCustomTextField(onTap: (){},hint: 'ملاحظات',),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        NotesCustomTextField(
+                          onTap: () {},
+                          hint: 'ملاحظات',
+                        ),
                         Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             InkWell(
-                              onTap: ()async{
-
-                               await showDialog<String>(
+                              onTap: () async {
+                                await showDialog<String>(
                                   context: context,
-
-                                  builder: (BuildContext context) =>  CupertinoAlertDialog(
-                                      title:    const Card(
-                                      shape:RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                         Radius.circular(10),),),
-                                        child:  Directionality(textDirection: TextDirection.rtl,child: SearchOnClient(hintText: 'البحث',)),
-                                      ),
-                                      content: Card(
-                                        child: SizedBox(
-                                          height: height*0.6,
-                                          child: ListView.builder(
-                                              itemCount: 9,
-                                              itemBuilder: (context ,int index){
-                                            return ListTile(  onTap: (){},trailing: titleOfTextField(title: 'عميل - 1'),leading: titleOfTextField(title: '01097758516'),
-                                            );
-                                          }),
+                                  builder: (BuildContext context) =>
+                                      CupertinoAlertDialog(
+                                        title: const Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10),
+                                            ),
+                                          ),
+                                          child: Directionality(
+                                              textDirection: TextDirection.rtl,
+                                              child: SearchOnClient(
+                                                hintText: 'البحث',
+                                              )),
+                                        ),
+                                        content: Card(
+                                          child: SizedBox(
+                                            height: height * 0.6,
+                                            child: ListView.builder(
+                                                itemCount: 9,
+                                                itemBuilder: (context, int index) {
+                                                  return ListTile(
+                                                    onTap: () {},
+                                                    trailing: titleOfTextField(
+                                                        title: 'عميل - 1'),
+                                                    leading: titleOfTextField(
+                                                        title: '01097758516'),
+                                                  );
+                                                }),
+                                          ),
                                         ),
                                       ),
-
-                                    ),
-                                  );
-
-
-
-
-
+                                );
                               },
                               child: Container(
-                                height: height*0.05,
-                                width: width*0.2,
+                                height: height * 0.05,
+                                width: width * 0.2,
                                 decoration: BoxDecoration(
                                   color: kBackgroundButton,
                                   borderRadius: BorderRadius.circular(8),
-                              ),
-                                child:const  Center(child: Text('أختر العميل' , style: TextStyle(
-                                    fontFamily: 'Cairo',
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.normal,
-                                    color:kTextColor),)),
+                                ),
+                                child: const Center(
+                                    child: Text(
+                                      'أختر العميل',
+                                      style: TextStyle(
+                                          fontFamily: 'Cairo',
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.normal,
+                                          color: kTextColor),
+                                    )),
                               ),
                             ),
-                            InkWell(onTap: ()async{
-
-                              await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2021, 1, 1),
-                                  lastDate: DateTime(2030, 1, 1),
-                              //     if(picked != null && picked != selectedDate){
-                              //   setState(() {
-                              //     selectedDate = picked;
-                              //   });
-                              // }
-
-                                );
-
-                            },child:const Icon(Icons.date_range_outlined ,color: kPrimaryColor,)),
+                            InkWell(
+                                onTap: () async {
+                                  await showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(2021, 1, 1),
+                                    lastDate: DateTime(2030, 1, 1),
+                                    //     if(picked != null && picked != selectedDate){
+                                    //   setState(() {
+                                    //     selectedDate = picked;
+                                    //   });
+                                    // }
+                                  );
+                                },
+                                child: const Icon(
+                                  Icons.date_range_outlined,
+                                  color: kPrimaryColor,
+                                )),
                             Container(
-                              height: height*0.05,
-                              width: width*0.2,
+                              height: height * 0.05,
+                              width: width * 0.2,
                               decoration: BoxDecoration(
                                 color: kBackgroundButton,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child:const  Center(child: Text('عرض التاريخ' , style: TextStyle(
-                                  fontFamily: 'Cairo',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.normal,
-                                  color:kTextColor),)),
+                              child: const Center(
+                                  child: Text(
+                                    'عرض التاريخ',
+                                    style: TextStyle(
+                                        fontFamily: 'Cairo',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.normal,
+                                        color: kTextColor),
+                                  )),
                             ),
-                            InkWell(onTap: ()async{
+                            InkWell(
+                                onTap: () async {
+                                  await showTimePicker(
+                                    context: context,
+                                    initialTime: TimeOfDay.now(),
+                                    confirmText: 'Ok',
+                                    cancelText: 'Cancel',
 
-                              await showTimePicker(
-                                context: context,
-                                initialTime: TimeOfDay.now(),
-                                confirmText: 'Ok',
-                                cancelText: 'Cancel',
-
-
-                                // builder: (BuildContext context, Widget child) {
-                                //   return Directionality(
-                                //     textDirection: TextDirection.rtl,
-                                //     child: child,
-                                //   );
-                                // },
-                              );
-
-                            },child:const Icon(Icons.access_alarm_outlined ,color: kPrimaryColor,)),
+                                    // builder: (BuildContext context, Widget child) {
+                                    //   return Directionality(
+                                    //     textDirection: TextDirection.rtl,
+                                    //     child: child,
+                                    //   );
+                                    // },
+                                  );
+                                },
+                                child: const Icon(
+                                  Icons.access_alarm_outlined,
+                                  color: kPrimaryColor,
+                                )),
                             Container(
-                              height: height*0.05,
-                              width: width*0.2,
+                              height: height * 0.05,
+                              width: width * 0.2,
                               decoration: BoxDecoration(
                                 color: kBackgroundButton,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child:const  Center(child: Text('عرض الساعه' , style: TextStyle(
-                                  fontFamily: 'Cairo',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.normal,
-                                  color:kTextColor),)),
+                              child: const Center(
+                                  child: Text(
+                                    'عرض الساعه',
+                                    style: TextStyle(
+                                        fontFamily: 'Cairo',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.normal,
+                                        color: kTextColor),
+                                  )),
                             ),
                           ],
                         ),
-                        SizedBox(height: height*0.02,),
-                        InkWell(onTap: ()=>Navigator.of(context).pop(),child: Align(alignment: AlignmentDirectional.bottomEnd,child: Image.asset('assets/image/submit.png',height: 40,width: 40,))),
+                        SizedBox(
+                          height: height * 0.02,
+                        ),
+                        InkWell(
+                            onTap: () => Navigator.of(context).pop(),
+                            child: Align(
+                                alignment: AlignmentDirectional.bottomEnd,
+                                child: Image.asset(
+                                  'assets/image/submit.png',
+                                  height: 40,
+                                  width: 40,
+                                ))),
                       ],
                     ),
-                  );
-                }),
-          ),
+                  ),
+                );
+              }),
         );
       },
+      // isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      // context: context,
+
+
     );
   }
+  // void addNewTaskShowModalBottomSheet(BuildContext context , double height ,double width , ) {
+  //   showModalBottomSheet(
+  //     isScrollControlled: true,
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.circular(10.0),
+  //     ),
+  //     context: context,
+  //     builder: (_) {
+  //       return Padding(
+  //         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+  //         child: Container(
+  //           height: height * 0.4,
+  //           width: width,
+  //           margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
+  //           child: StreamBuilder<Object>(
+  //               stream: null,
+  //               builder: (context, snapshot) {
+  //                 return Directionality(
+  //                   textDirection: TextDirection.rtl,
+  //                   child: ListView(
+  //
+  //                     children: [
+  //                       SizedBox(height: height*0.02,),
+  //                       const Center(
+  //                         child: Text(
+  //                           'إضافة مهمة جديدة',
+  //                           style: TextStyle(
+  //                               fontFamily: 'Cairo',
+  //                               fontSize: 16,
+  //                               fontWeight: FontWeight.bold,
+  //                               color: Colors.black),
+  //                         ),
+  //                       ),
+  //                       SizedBox(height: height*0.02,),
+  //                       NotesCustomTextField(onTap: (){},hint: 'ملاحظات',),
+  //                       Row(
+  //                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                         children: [
+  //                           InkWell(
+  //                             onTap: ()async{
+  //
+  //                              await showDialog<String>(
+  //                                 context: context,
+  //
+  //                                 builder: (BuildContext context) =>  CupertinoAlertDialog(
+  //                                     title:    const Card(
+  //                                     shape:RoundedRectangleBorder(
+  //                                     borderRadius: BorderRadius.all(
+  //                                        Radius.circular(10),),),
+  //                                       child:  Directionality(textDirection: TextDirection.rtl,child: SearchOnClient(hintText: 'البحث',)),
+  //                                     ),
+  //                                     content: Card(
+  //                                       child: SizedBox(
+  //                                         height: height*0.6,
+  //                                         child: ListView.builder(
+  //                                             itemCount: 9,
+  //                                             itemBuilder: (context ,int index){
+  //                                           return ListTile(  onTap: (){},trailing: titleOfTextField(title: 'عميل - 1'),leading: titleOfTextField(title: '01097758516'),
+  //                                           );
+  //                                         }),
+  //                                       ),
+  //                                     ),
+  //
+  //                                   ),
+  //                                 );
+  //
+  //
+  //
+  //
+  //
+  //                             },
+  //                             child: Container(
+  //                               height: height*0.05,
+  //                               width: width*0.2,
+  //                               decoration: BoxDecoration(
+  //                                 color: kBackgroundButton,
+  //                                 borderRadius: BorderRadius.circular(8),
+  //                             ),
+  //                               child:const  Center(child: Text('أختر العميل' , style: TextStyle(
+  //                                   fontFamily: 'Cairo',
+  //                                   fontSize: 12,
+  //                                   fontWeight: FontWeight.normal,
+  //                                   color:kTextColor),)),
+  //                             ),
+  //                           ),
+  //                           InkWell(onTap: ()async{
+  //
+  //                             await showDatePicker(
+  //                                 context: context,
+  //                                 initialDate: DateTime.now(),
+  //                                 firstDate: DateTime(2021, 1, 1),
+  //                                 lastDate: DateTime(2030, 1, 1),
+  //                             //     if(picked != null && picked != selectedDate){
+  //                             //   setState(() {
+  //                             //     selectedDate = picked;
+  //                             //   });
+  //                             // }
+  //
+  //                               );
+  //
+  //                           },child:const Icon(Icons.date_range_outlined ,color: kPrimaryColor,)),
+  //                           Container(
+  //                             height: height*0.05,
+  //                             width: width*0.2,
+  //                             decoration: BoxDecoration(
+  //                               color: kBackgroundButton,
+  //                               borderRadius: BorderRadius.circular(8),
+  //                             ),
+  //                             child:const  Center(child: Text('عرض التاريخ' , style: TextStyle(
+  //                                 fontFamily: 'Cairo',
+  //                                 fontSize: 12,
+  //                                 fontWeight: FontWeight.normal,
+  //                                 color:kTextColor),)),
+  //                           ),
+  //                           InkWell(onTap: ()async{
+  //
+  //                             await showTimePicker(
+  //                               context: context,
+  //                               initialTime: TimeOfDay.now(),
+  //                               confirmText: 'Ok',
+  //                               cancelText: 'Cancel',
+  //
+  //
+  //                               // builder: (BuildContext context, Widget child) {
+  //                               //   return Directionality(
+  //                               //     textDirection: TextDirection.rtl,
+  //                               //     child: child,
+  //                               //   );
+  //                               // },
+  //                             );
+  //
+  //                           },child:const Icon(Icons.access_alarm_outlined ,color: kPrimaryColor,)),
+  //                           Container(
+  //                             height: height*0.05,
+  //                             width: width*0.2,
+  //                             decoration: BoxDecoration(
+  //                               color: kBackgroundButton,
+  //                               borderRadius: BorderRadius.circular(8),
+  //                             ),
+  //                             child:const  Center(child: Text('عرض الساعه' , style: TextStyle(
+  //                                 fontFamily: 'Cairo',
+  //                                 fontSize: 12,
+  //                                 fontWeight: FontWeight.normal,
+  //                                 color:kTextColor),)),
+  //                           ),
+  //                         ],
+  //                       ),
+  //                       SizedBox(height: height*0.02,),
+  //                       InkWell(onTap: ()=>Navigator.of(context).pop(),child: Align(alignment: AlignmentDirectional.bottomEnd,child: Image.asset('assets/image/submit.png',height: 40,width: 40,))),
+  //                     ],
+  //                   ),
+  //                 );
+  //               }),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   Text titleOfTextField({String? title}) {
     return Text(

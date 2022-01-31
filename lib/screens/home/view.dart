@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:crm/screens/components/constants.dart';
-import 'package:crm/screens/components/fast_widget.dart';
 import 'package:crm/screens/home/pages/views/buttons_naviagtion_bar.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -11,20 +8,25 @@ import 'pages/views/home/view.dart';
 import 'pages/views/search/view.dart';
 import 'pages/views/speed_dial.dart';
 import 'pages/views/tasks/view.dart';
+
 class HomeTabScreen extends StatefulWidget {
-   final int index;
-   const HomeTabScreen({Key? key, this.index =0 }) : super(key: key);
+  final int index;
+
+  const HomeTabScreen({Key? key, this.index = 0}) : super(key: key);
+
   @override
   State<HomeTabScreen> createState() => _HomeTabScreenState();
 }
+
 class _HomeTabScreenState extends State<HomeTabScreen> {
   static const List<Widget> _widgetOptions = <Widget>[
-   HomeScreen(),
+    HomeScreen(),
     TasksScreen(),
     CalendarScreen(),
     SearchScreen(),
   ];
   int _selectedIndex = 0;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -33,14 +35,17 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
 
   @override
   void initState() {
-   _selectedIndex = widget.index;
-    super.initState();}
+    _selectedIndex = widget.index;
+    super.initState();
+  }
+
   final ItemsBar _itemsBar = ItemsBar();
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop:()async{
-       return onWillPop(context);
+      onWillPop: () async {
+        return onWillPop(context);
       },
       child: Scaffold(
         body: _widgetOptions.elementAt(_selectedIndex),
@@ -49,7 +54,6 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
         bottomNavigationBar: Directionality(
           textDirection: TextDirection.rtl,
           child: BottomNavigationBar(
-
             currentIndex: _selectedIndex,
             onTap: (index) {
               setState(() {
@@ -74,8 +78,4 @@ class _HomeTabScreenState extends State<HomeTabScreen> {
       ),
     );
   }
-
-
-
-
 }

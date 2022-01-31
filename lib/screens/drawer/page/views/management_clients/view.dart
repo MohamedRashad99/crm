@@ -6,6 +6,7 @@ import 'package:crm/screens/components/CustomButtonSizer.dart';
 import 'package:crm/screens/components/appBar.dart';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/smallButtonSizer.dart';
+import 'package:crm/screens/drawer/page/views/management_clients/page/views/custom_dimissible.dart';
 import 'package:crm/screens/home/pages/views/home/page/views/client_list_screen/view.dart';
 import 'package:crm/screens/home/pages/views/speed_dial.dart';
 import 'package:crm/screens/home/pages/views/tasks/view.dart';
@@ -47,23 +48,27 @@ class _MainScreenState extends State<ManagementClientsScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
               children: [
-                SizedBox(
-                  height: height * 0.01,
-                ),
+                customSizedBox(height: height),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     SizedBox(
                         width: width * 0.7,
                         child: const SearchOnClient(hintText: 'بحث')),
-                    Image.asset(
-                      'assets/image/Filter.png',
+                    InkWell(
+                      onTap: (){
+                        archiveClients(context, height, width);
+
+                      },
+                      child: Image.asset(
+                        'assets/image/Filter.png',
+                      ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: height * 0.01,
-                ),
+                customSizedBox(height: height),
+
                 Container(
                   height: height * 0.7,
                   width: width,
@@ -175,72 +180,78 @@ class _MainScreenState extends State<ManagementClientsScreen> {
                               ),
                             );
                           },
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(vertical: 3),
-                            color: Colors.white,
-                            //assets/image/Group 6865.png
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: CircleAvatar(
-                                    maxRadius: 15,
-                                    child: Image.asset(
-                                        'assets/image/Group 6865.png'),
-                                  ),
+                          child: CustomDismissible(
+                              keyName:'item ${[index]}',
+                              moveArchive: 'نقل للأرشيف',
+                              titleDialog: 'نقل للأرشيف',
+                              subTitleDialog: 'هل انت متاكد من نقل العميل إالي الأرشيف',
+                              buttonDialogConfirmation: 'للأرشيف',
+                              onTap: (){},
+                              child: Container(
+                          margin: const EdgeInsets.symmetric(vertical: 3),
+                          color: Colors.white,
+                          child: Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.only(left: 10,right: 8),
+
+                                decoration:const  BoxDecoration(shape: BoxShape.circle),
+                                child: Image.asset(
+                                  'assets/image/Group 6865.png',
+
                                 ),
-                                SizedBox(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      buildRow(
-                                        title: 'الاسم',
-                                        subTitle: ': Ahmed Samir ',
-                                      ),
-                                      buildRow(
-                                        callPhone: () {
-                                          // launch(('tel://${item.mobile_no}'));
-                                        },
-                                        title: 'رقم الهاتف',
-                                        subTitle: ' : 01097758516',
-                                      ),
-                                      buildRow(
-                                        callPhone: () {
-                                          openWhatsApp(context);
-                                        },
-                                        title: 'رقم الواتس أب',
-                                        subTitle: ' : 01097758516',
-                                      ),
-                                      SizedBox(
-                                        height: height * 0.01,
-                                      ),
-                                      Row(
-                                        children: [
-                                          buildContainer(
-                                              background: kRoundColor,
-                                              width: width * 0.25,
-                                              color: kTextColor,
-                                              title: 'صفحة فيس بوك'),
-                                          SizedBox(
-                                            width: width * 0.1,
-                                          ),
-                                          buildContainer(
-                                            background: kPrimaryColor,
+                              ),
+                              SizedBox(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    buildRow(
+                                      title: 'الاسم',
+                                      subTitle: ': Ahmed Samir ',
+                                    ),
+                                    buildRow(
+                                      callPhone: () {
+                                        // launch(('tel://${item.mobile_no}'));
+                                      },
+                                      title: 'رقم الهاتف',
+                                      subTitle: ' : 01097758516',
+                                    ),
+                                    buildRow(
+                                      callPhone: () {
+                                        openWhatsApp(context);
+                                      },
+                                      title: 'رقم الواتس أب',
+                                      subTitle: ' : 01097758516',
+                                    ),
+                                    customSizedBox(height: height),
+
+                                    Row(
+                                      children: [
+                                        buildContainer(
+                                            background: kSkyLightColor,
                                             width: width * 0.25,
-                                            color: kTextColor,
-                                            title: 'عملاء المتابعات',
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: height * 0.01,
-                                      ),
-                                    ],
-                                  ),
+                                            color: kBlackText,
+                                            title: 'صفحة فيس بوك'),
+                                        SizedBox(
+                                          width: width * 0.1,
+                                        ),
+                                        buildContainer(
+                                          background: kAccentColor,
+                                          width: width * 0.25,
+                                          color: kBlackText,
+                                          title: 'عملاء المتابعات',
+                                        ),
+                                      ],
+                                    ),
+                                    customSizedBox(height: height),
+
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
+                        ),
+                            ),
                         );
                       }),
                 )
@@ -253,6 +264,16 @@ class _MainScreenState extends State<ManagementClientsScreen> {
     );
   }
 
+
+
+
+
+
+  SizedBox customSizedBox ({required height}){
+    return  SizedBox(
+      height: height * 0.01,
+    );
+  }
   Container buildContainer(
       {required double width,
       required Color background,
