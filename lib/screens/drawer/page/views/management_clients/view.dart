@@ -96,7 +96,7 @@ class _MainScreenState extends State<ManagementClientsScreen> {
                                   onTapConnectedDone: (){},
                                   onTapNotRespond: (){});
                             });
-
+//......
                       },
                       child: Image.asset(
                         'assets/image/Filter.png',
@@ -104,6 +104,7 @@ class _MainScreenState extends State<ManagementClientsScreen> {
                     ),
                   ],
                 ),
+
                 customSizedBox(height: height),
 
                 Container(
