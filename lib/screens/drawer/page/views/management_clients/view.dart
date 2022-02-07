@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:crm/screens/add_new_task/page/views/search/search.dart';
+import 'package:crm/screens/archives/view.dart';
 import 'package:crm/screens/client_data/view.dart';
 import 'package:crm/screens/components/CustomButtonSizer.dart';
 import 'package:crm/screens/components/appBar.dart';
@@ -58,7 +59,43 @@ class _MainScreenState extends State<ManagementClientsScreen> {
                         child: const SearchOnClient(hintText: 'بحث')),
                     InkWell(
                       onTap: (){
-                        archiveClients(context, height, width);
+                        archiveClients(context, height: height, width: width,
+                            onTapCustomerCase: (){
+                              archiveClientsActions(
+                                  context, height: height, width: width,
+                                  onTapToArchive: ()=> Get.off(()=>const  ArchiveClientsScreen()),
+                                  onTapConnectedDone: (){},
+                                  onTapNotRespond: (){});
+                            },
+                            onTapCustomerSource: (){
+                              archiveClientsActions(
+                                  context, height: height, width: width,
+                                  onTapToArchive: (){},
+                                  onTapConnectedDone: (){},
+                                  onTapNotRespond: (){});
+                            },
+                            onTapCustomerClass: (){
+                              archiveClientsActions(
+                                  context, height: height, width: width,
+                                  onTapToArchive: (){},
+                                  onTapConnectedDone: (){},
+                                  onTapNotRespond: (){});
+                             // Navigator.pop(context);
+                            },
+                            onTapMonthlyRating: (){
+                              archiveClientsActions(
+                                  context, height: height, width: width,
+                                  onTapToArchive: (){},
+                                  onTapConnectedDone: (){},
+                                  onTapNotRespond: (){});
+                            },
+                            onTapProjectRating: (){
+                              archiveClientsActions(
+                                  context, height: height, width: width,
+                                  onTapToArchive: (){},
+                                  onTapConnectedDone: (){},
+                                  onTapNotRespond: (){});
+                            });
 
                       },
                       child: Image.asset(

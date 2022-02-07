@@ -1,6 +1,7 @@
 import 'package:crm/screens/add_new_task/page/views/search/search.dart';
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/notes_textformfield.dart';
+import 'package:crm/screens/components/smallButtonSizer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,6 +25,7 @@ class ListOfCard extends StatefulWidget {
       required this.date,
       required this.time})
       : super(key: key);
+
   @override
   State<ListOfCard> createState() => _ListOfCardState();
 }
@@ -97,42 +99,73 @@ class _ListOfCardState extends State<ListOfCard> {
                             ),
                           ),
                           PopupMenuButton(
-                              color: kHomeColor,
+                            color: kHomeColor,
 
-                              /// TODO: OverFlow
-                              padding: const EdgeInsets.only(right: 40),
-                              enabled: true,
-                              onSelected: (value) {
-                                setState(() {
-                                  _value = value.toString();
-                                });
-                              },
-                              itemBuilder: (ctx) => [
-                                    PopupMenuItem(
-                                      onTap: () =>
-                                          _addNewTaskShowModalBottomSheet(
-                                        context,
-                                        height,
-                                        width,
-                                      ),
-                                      textStyle: const TextStyle(
-                                          fontFamily: 'Cairo',
-                                          fontSize: 12,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
-                                      child: Text("تعديل"  ),
-                                      value: "first",
+                            /// TODO: OverFlow
+                            padding: const EdgeInsets.only(right: 40),
+                            enabled: true,
+
+                            onSelected: (value) {
+                              setState(() {
+                                _value = value.toString();
+                              });
+                            },
+                            itemBuilder: (ctx) => [
+                              PopupMenuItem(
+                                onTap: () =>
+                                    _modifyingDeletingClientTaskBottomSheetModelSheet(
+                                  context,
+                                  height,
+                                  width,
+                                ),
+                                child: const Text(
+                                  "تعديل",
+                                  style: TextStyle(
+                                      fontFamily: 'Cairo',
+                                      fontSize: 12,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                value: "first",
+                              ),
+                              PopupMenuItem(
+                                onTap: () async {
+                                  await showConfirmationDialog(
+                                    context,
+                                    done: SmallButtonSizer(
+                                      onPressed: () async {
+                                        // Navigator.pop(context);
+                                        await showConfirmationDialog(context,
+                                            title: 'رسالة نجاح متغيرة',
+                                            image: 'assets/image/99 1.png',
+                                            cancelled: const SizedBox(),
+                                            done: const SizedBox());
+                                        Navigator.pop(context);
+                                      },
+                                      title: 'تاكيد',
+                                      color: kTextColor,
+                                      loadingColor: kPrimaryColor,
                                     ),
-                                    const PopupMenuItem(
-                                      textStyle: TextStyle(
-                                          fontFamily: 'Cairo',
-                                          fontSize: 12,
-                                          color: Colors.red,
-                                          fontWeight: FontWeight.bold),
-                                      child: Text("حذف"),
-                                      value: "Second",
-                                    ),
-                                  ])
+                                    cancelled: SmallButtonSizer(
+                                        onPressed: () => Navigator.pop(context),
+                                        title: 'إلغاء',
+                                        color: kButtonRedDark),
+                                    image: 'assets/image/99 1.png',
+                                    title: 'إتمام المهمة',
+                                  );
+                                },
+                                child:const  Text(
+                                  "حذف",
+                                  style: TextStyle(
+                                      fontFamily: 'Cairo',
+                                      fontSize: 12,
+                                      color: kButtonRedDark,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                value: "Second",
+                              ),
+                            ],
+                          )
                         ],
                       ),
                       SizedBox(
@@ -201,14 +234,14 @@ class _ListOfCardState extends State<ListOfCard> {
     );
   }
 
-  Future<void> _addNewTaskShowModalBottomSheet(
+//Deleting and modifying the client assignment
+  Future<void> _modifyingDeletingClientTaskBottomSheetModelSheet(
     BuildContext context,
     double height,
     double width,
   ) async {
-      Scaffold.of(context).showBottomSheet(
-
-       (_) {
+    Scaffold.of(context).showBottomSheet(
+      (_) {
         // Timer(Duration(seconds: 20), () {
         //   Navigator.of(context).pop();
         //   Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
@@ -399,13 +432,11 @@ class _ListOfCardState extends State<ListOfCard> {
               }),
         );
       },
-        // isScrollControlled: true,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        // context: context,
-
-
+      // isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      // context: context,
     );
   }
 

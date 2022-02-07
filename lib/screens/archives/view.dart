@@ -57,7 +57,12 @@ class _MainScreenState extends State<ArchiveClientsScreen> {
                         child: const SearchOnClient(hintText: 'بحث')),
                     InkWell(
                       onTap: (){
-                        archiveClients(context, height, width);
+                        archiveClients(context, height: height, width: width,
+                            onTapCustomerCase: (){},
+                            onTapCustomerSource: (){},
+                            onTapCustomerClass: (){},
+                            onTapMonthlyRating: (){},
+                            onTapProjectRating: (){});
 
                       },
                       child: Image.asset(

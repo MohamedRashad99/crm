@@ -1,6 +1,7 @@
 import 'package:crm/screens/components/constants.dart';
 import 'package:crm/screens/components/smallButtonSizer.dart';
 import 'package:crm/screens/task_completed_datails/view.dart';
+import 'package:crm/screens/task_details/view.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,12 @@ class _TasksListState extends State<TasksList> {
                     ),
                     expanded: SizedBox(
                       child: ListOfCard(
-                          onTap: () => Get.to(() => TasksCompletedDetails()),
+                          onTap: () => Get.to(() => TasksDetails(
+                           headTitle: 'إجتماع مناقشة العرض المقدم من العميل',
+                            clientName: 'أ / أحمد علي',
+                             time: '9:00 am',
+                           clientPhone: '01097758516 ',
+                          )),
                           circleOnTap: () async {
                             await showConfirmationDialog(
                               context,
@@ -124,7 +130,12 @@ class _TasksListState extends State<TasksList> {
                     ),
                     expanded: SizedBox(
                       child: ListOfCard(
-                          onTap: () => Get.to(() => TasksCompletedDetails()),
+                          onTap: () => Get.to(() => TasksDetails(
+                            headTitle: 'إجتماع مناقشة العرض المقدم من العميل',
+                            clientName: 'أ / أحمد علي',
+                            time: '9:00 am',
+                            clientPhone: '01097758516 ',
+                          )),
                           circleOnTap: () async {
                             await showConfirmationDialog(
                               context,

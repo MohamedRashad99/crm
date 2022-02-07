@@ -82,8 +82,15 @@ spaceW(double width) {
 
 
 void archiveClients(BuildContext context,
-    double height,
-    double width,)  {
+{    required double height,
+  required double width,
+  required VoidCallback onTapCustomerCase,
+  required VoidCallback onTapCustomerSource,
+  required VoidCallback onTapCustomerClass,
+  required VoidCallback onTapMonthlyRating,
+  required VoidCallback onTapProjectRating,}
+
+    )  {
   showModalBottomSheet(
     backgroundColor:  kHomeColor,
     isScrollControlled: true,
@@ -94,7 +101,7 @@ void archiveClients(BuildContext context,
   context: context,
 
   builder: (_) {
-      return Container(
+      return SizedBox(
         height: height * 0.35,
         width: width,
 
@@ -126,25 +133,88 @@ void archiveClients(BuildContext context,
                     SizedBox(height: height*0.01,),
 
                     classificationContainer(
-                    height, width
-                    ,onTap: (){}
-                    ,classificationName: 'تصنيف بحالة العميل'),
+                    height, width,
+                        onTap: onTapCustomerCase,
+                    classificationName: 'تصنيف بحالة العميل'),
                     classificationContainer(
-                        height, width
-                        ,onTap: (){}
-                        ,classificationName: 'تصنيف بمصدر العميل'),
+                        height, width,
+                        onTap: onTapCustomerSource,
+                        classificationName: 'تصنيف بمصدر العميل'),
                     classificationContainer(
-                        height, width
-                        ,onTap: (){}
-                        ,classificationName: 'تصنيف بفئة العميل'),
+                        height, width,
+                        onTap: onTapCustomerClass,
+                        classificationName: 'تصنيف بفئة العميل'),
                     classificationContainer(
-                        height, width
-                        ,onTap: (){}
-                        ,classificationName: 'تصنيف شهري'),
+                        height, width,
+                        onTap: onTapMonthlyRating,
+                        classificationName: 'تصنيف شهري'),
                     classificationContainer(
-                        height, width
-                        ,onTap: (){}
-                        ,classificationName: 'تصنيف بالمشروع'),
+                        height, width,
+                        onTap: onTapProjectRating,
+                        classificationName: 'تصنيف بالمشروع'),
+                  ],
+                ),
+
+
+              );
+            }),
+      );
+    },
+
+
+
+  );
+}
+
+
+void archiveClientsActions(BuildContext context,
+    {    required double height,
+      required double width,
+      required VoidCallback onTapToArchive,
+      required VoidCallback onTapConnectedDone,
+      required VoidCallback onTapNotRespond,
+ }
+
+    )  {
+  showModalBottomSheet(
+    backgroundColor:  kHomeColor,
+    isScrollControlled: true,
+
+    shape:  const RoundedRectangleBorder(
+      borderRadius:  BorderRadius.only(topLeft: Radius.circular(8),topRight: const Radius.circular(8),),
+    ),
+    context: context,
+
+    builder: (_) {
+      return SizedBox(
+        height: height * 0.2,
+        width: width,
+
+        child: StreamBuilder<Object>(
+            stream: null,
+            builder: (context, snapshot) {
+              // ignore: prefer_const_constructors
+              return Directionality(
+                textDirection: TextDirection.rtl,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+
+                    SizedBox(height: height*0.01,),
+
+                    classificationContainer(
+                        height, width,
+                        onTap: onTapToArchive,
+                        classificationName: 'إلي الأرشيف'),
+                    classificationContainer(
+                        height, width,
+                        onTap: onTapConnectedDone,
+                        classificationName: 'تم التواصل'),
+                    classificationContainer(
+                        height, width,
+                        onTap: onTapNotRespond,
+                        classificationName: 'لم يرد'),
+
                   ],
                 ),
 

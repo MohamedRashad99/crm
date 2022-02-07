@@ -7,6 +7,7 @@ import 'package:crm/screens/components/smallButtonSizer.dart';
 import 'package:crm/screens/drawer/page/views/management_clients/view.dart';
 import 'package:crm/screens/home/pages/views/tasks/view.dart';
 import 'package:crm/screens/new_follow_up/view.dart';
+import 'package:crm/screens/task_details/view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -54,10 +55,25 @@ class ClientListsScreen extends StatelessWidget {
                               color: kPrimaryColor,
                             ),
                             CustomButtonSizer(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Get.to(() => const ManagementClientsScreen());
-                              },
+
+
+                              /*     onTap: () => Get.to(() => TasksDetails(
+                           headTitle: 'إجتماع مناقشة العرض المقدم من العميل',
+                            clientName: 'أ / أحمد علي',
+                             time: '9:00 am',
+                           clientPhone: '01097758516 ',
+                          )*/
+                              onPressed: ()=> Get.off(()=>TasksDetails(
+                                headTitle: 'إجتماع مناقشة العرض المقدم من العميل',
+                                clientName: 'أ / أحمد علي',
+                                time: '9:00 am',
+                                clientPhone: '01097758516 ',
+                              ),),
+                                // Navigator.pop(context);
+                                // Get.to(() => const ManagementClientsScreen());
+
+
+
                               title: 'سجل المتابعة',
                               color: kSecondaryColor,
                             ),

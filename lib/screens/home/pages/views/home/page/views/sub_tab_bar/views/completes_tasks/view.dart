@@ -22,7 +22,12 @@ class CompletedTasks extends StatelessWidget {
           itemBuilder: (context, int index) {
             return InkWell(
               onTap: () {
-                Get.to(() => TasksCompletedDetails());
+                Get.to(() => TasksCompletedDetails(
+                  headTitle: 'إجتماع مناقشة العرض المقدم من العميل',
+                  clientName: 'أ / أحمد علي',
+                  time: '9:00 am',
+                  clientPhone: '01097758516 ',
+                ));
               },
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -53,7 +58,7 @@ class CompletedTasks extends StatelessWidget {
                     ),
                     buildSizedBox(height),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         const Icon(
                           Icons.alarm_add_sharp,
@@ -62,27 +67,29 @@ class CompletedTasks extends StatelessWidget {
                         buildText(
                           text: ' Due-date ',
                         ),
-                        SizedBox(
-                          width: width * 0.05,
+
+                        Directionality(
+                          textDirection: TextDirection.ltr,
+                          child: buildText(
+                            text: '11 :00 am ',
+                          ),
                         ),
-                        buildText(
-                          text: '11 :am ',
-                        ),
                         SizedBox(
-                          width: width * 0.15,
+                          width: width * 0.10,
                         ),
                         const Icon(
                           Icons.check_circle,
                           color: kTextColor,
                           size: 18,
                         ),
+
                         buildText(
                           text: 'اليوم ',
                         ),
                         SizedBox(
                           width: width * 0.05,
                         ),
-                     buildText(text:   'am 12 :00  ',),
+                     Directionality(textDirection: TextDirection.ltr,child: buildText(text:   ' 12 :00 am ',)),
                       ],
                     ),
                     buildSizedBox(height),
@@ -106,7 +113,8 @@ class CompletedTasks extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
-          fontFamily: 'Cairo', fontSize: 12, color: Colors.black),
+          fontFamily: 'Cairo', fontSize: 12,
+          color: Colors.black),
     );
   }
 }
